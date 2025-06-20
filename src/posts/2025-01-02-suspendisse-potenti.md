@@ -2,7 +2,7 @@
 layout: post
 title: Suspendisse potenti
 date: 2025-01-02
-tags: posts
+tags: post
 ---
 
 Suspendisse potenti. Pellentesque id ultricies justo, sed convallis lorem. In malesuada eleifend risus, non accumsan felis molestie consequat. Donec bibendum risus odio, ac sagittis ligula pellentesque vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras mollis, justo facilisis tempor tempor, ex orci pharetra libero, vel condimentum ex felis at nibh. Nam a pellentesque dui. Donec eget quam eget ipsum lacinia cursus et sit amet est. Aenean justo enim, consequat et fringilla nec, blandit consectetur ex. Sed dui nibh, ullamcorper at posuere eu, ullamcorper ut lorem. Mauris accumsan tortor vel mauris hendrerit cursus. Nullam vitae interdum urna. Vestibulum interdum finibus metus, eu feugiat felis dignissim eget.
