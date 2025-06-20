@@ -1,0 +1,96 @@
+:root {
+  --padding: 1rem;
+}
+
+*,
+button,
+input,
+optgroup,
+option,
+output,
+select,
+textarea {
+  font-family: monospace;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  width: 768px;
+  min-width: 768px;
+  max-width: 768px;
+  margin: calc(var(--padding) * 3) auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0 0 var(--padding) 0;
+}
+
+h1:has(+ h2),
+h3:has(+ h4) {
+  margin-bottom: 0;
+}
+
+h1:has(+ h2) + h2,
+h3:has(+ h4) + h4 {
+  color: gray;
+  font-weight: normal;
+}
+
+hr {
+  margin: var(--padding) 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  gap: var(--padding);
+}
+
+nav ul li {
+  list-style-type: none;
+}
+
+ul.no-padding-left {
+  padding-left: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: calc(var(--padding) * 3) var(--padding);
+    width: calc(100vw - calc(var(--padding) * 2));
+    min-width: calc(100vw - calc(var(--padding) * 2));
+    max-width: calc(100vw - calc(var(--padding) * 2));
+  }
+}
