@@ -2,7 +2,7 @@
 layout: post
 title: Lorem ipsum
 date: 2025-01-01
-tags: posts
+tags: post
 ---
 
 ![](/static/res/img/cat.jpg)

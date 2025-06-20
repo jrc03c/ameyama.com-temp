@@ -2,6 +2,7 @@
 // https://www.11ty.dev/docs/config/
 
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy"
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight"
 
 export default async function (config) {
   // Set the input directory:
@@ -15,6 +16,7 @@ export default async function (config) {
 
   // Add plugins:
   config.addPlugin(EleventyHtmlBasePlugin)
+  config.addPlugin(syntaxHighlight)
 
   // Add linters:
   // NOTE: Using a standard function syntax (i.e., instead of the fat-arrow
@@ -30,8 +32,8 @@ export default async function (config) {
   // Add filters:
   // https://www.11ty.dev/docs/filters/
   // synchronous:
-  config.addFilter("filter-name", value => {
-    console.log(value)
+  config.addFilter("to-iso", value => {
+    return new Date(value).toISOString().split("T")[0]
   })
 
   config.addFilter("to-locale-date-string", value => {

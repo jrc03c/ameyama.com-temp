@@ -1,7 +1,7 @@
 ---
 layout: default
 title: My Cool Site
-permalink: /
+permalink: /just-a-backup-index-page/
 ---
 
 Hello, world! Here are my blog posts:

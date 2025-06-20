@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link
+  href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"
+  rel="stylesheet"
+  type="text/css" />
+<link href="/static/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1><a href="/">My Cool Site</a></h1>
+<h2>The coolest site on the internet</h2>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/contact/">Contact</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<h3>Passgen</h3>
+<h4>Mon, 27 Apr 2020 00:00:00 GMT by jrc03c</h4>
+
+<blockquote>
+<p><strong>NOTE:</strong> This tool has been archived.</p>
+</blockquote>
+<h3>Intro</h3>
+<p>Hey! I noticed today as I was updating my projects page that I hadn't written about Passgen before. <a href="/passgen">Passgen</a> is a stateless password generator. In other words, you enter some information and it spits out a password for you. It'll always generate the same password for a given set of inputs. So, if you always enter the same domain, username or email address, and master password, it'll always generate the same password.</p>
+<p>A <em>stateless</em> password generator like Passgen is an alternative to using a <em>stateful</em> password manager (one that stores your data somewhere). I'm not sure yet whether or not I'm ready to use it for all of my passwords, though; I'm still testing it out.</p>
+<h3>Limitations</h3>
+<p>There are a few known limitations to stateless password managers. I'll explain the first one by giving an example.</p>
+<p>Imagine that you have these credentials:</p>
+<blockquote>
+  <p>
+    <b>domain:</b> example.com<br>
+    <b>username:</b> someone<br>
+    <b>master password:</b> helloworld<br>
+    <b>maximum length:</b> 32
+  </p>
+</blockquote>
+<p>Given these inputs, Passgen will always generate this password: <em>ec6fe2d6e9478997f14d04896c2bcae2</em>.</p>
+<p>In a stateful password manager, you could generate a new password for this particular set of credentials without needing to change any of the information. However, in a stateless password generator like Passgen where the same inputs always generate the same password, you'd have to change at least one piece of information in order to generate a new password. You could make a change as simple as adding a number to the master password, changing it from <em>helloworld</em> to <em>helloworld1</em>, which would yield a completely new password that looks nothing like the last one: <em>2dee48fa3153902e1bf87a0d8decee7e</em>. You could also generate a completely new password by changing the domain or username values instead of, or in addition to, the master password value. Well, that's great and all, but now you'd have to remember a new master password for this set of credentials. If you didn't change the master passwords for all of your other credentials to match this new master password, then after a while you'd probably end up in a situation in which you'd be remembering a different master password for each set of credentials, which is hardly better than not using a password manager at all. However, the one advantage of using a stateless generator even in such a scenario is that it's still possible to remember extremely simple inputs (changing them by (for example) only one character at a time (though I'm not necessarily recommending such a strategy)) and keep track of simple state changes in your head, while at the same time being able to generate completely different passwords for each credential set.</p>
+<p>Of course, you needn't use the three fields in Passgen as they're labelled; you could easily use them as part of a strategy to help you keep track of the state mentally (or physically or digitally). You could, for example, keep track of non-password values on (say) sticky notes or in a text file somewhere, and you could call those values &quot;rotations&quot; or something. So, on one sticky note, you could have: &quot;example.com: 1&quot;, meaning that you're on password #1 for example.com. Then, you could go to Passgen and enter that rotation number in one of the fields. In this example, I've moved the username up to the domain field and entered only the rotation number in the username field:</p>
+<blockquote>
+  <p>
+    <b>domain:</b> example.com / someone<br>
+    <b>username:</b> 1<br>
+    <b>master password:</b> helloworld<br>
+    <b>maximum length:</b> 32
+  </p>
+</blockquote>
+<p>This yields the password: <em>58f62f196e87e92eb2f2bdbd64112d0b</em>.</p>
+<p>Then, when it's time to generate a new password, you'd cross off &quot;example.com: 1&quot; on your sticky note and replace it with: &quot;example.com: 2&quot;. Then, you'd just enter 2 in the username field next time along with all of the other (same) information:</p>
+<blockquote>
+  <p>
+    <b>domain:</b> example.com / someone<br>
+    <b>username:</b> 2<br>
+    <b>master password:</b> helloworld<br>
+    <b>maximum length:</b> 32
+  </p>
+</blockquote>
+<p>That would yield the new password: <em>a949c872f373d27369d7c76fc954473f</em>.</p>
+<p>Or you could do something else entirely. There are lots of different strategies that could be used here, and I highly doubt the one I just proposed is the best. In any case, the point is that the &quot;stateless&quot; adjective is a bit misleading; state will almost certainly be necessary over time, but the state lives in your head or on paper or in a text file and not in the keychain itself. Ideally, stateless password generators could act a bit like the one-time password tools that are used as second-factor authenticators nowadays: they could use the domain, username, and master password fields in combination with a rolling time value to generate unique passwords every time. But that'd require cooperation from web service back-ends, and I have no idea if anyone is looking to develop such a protocol right now.</p>
+<p>The second limitation is specific to Passgen, and it's this: in Passgen, there's no way to specify a formula for the generated password. Some websites won't let you use special characters as part of your password; others require special characters, or require capital letters or numbers, or have other particular rules. At the moment, there's no way to specify such a formula in Passgen. This is partially by design, as remembering a formula in addition to the other information requires memorizing too much state, in my opinion. But that also means that you may not be able to use Passgen in such situations, or that you might always have to remember to modify the password generated by Passgen by appending an exclamation mark or whatever.</p>
+<h3>Benefits</h3>
+<p>So, why would you want to use a stateless password generator when you could instead use any of the many popular stateful password managers that already exist? The primary benefit to a tool like Passgen is that there's no data to store anywhere, so it can't get lost or stolen or corrupted or deleted --- unless, of course, I incur some kind of brain damage.</p>
+<p>Having a stateless password manager also means that I can access my credentials from anywhere in the world as long as I can get to the generator; I don't need to download and install software and then sync my keychain to a particular machine. So, if someone stole all of my digital devices, I'd still be able to access my accounts from a new device without worry.</p>
+<p>Two more benefits of Passgen specifically are that: (1) <a href="https://gitlab.com/jrc03c/passgen">it's open source</a>, and (2) it works offline. It's pretty much just a web page built with <a href="https://vuejs.org/">Vue</a>, <a href="https://clipboardjs.com/">ClipboardJS</a>, and <a href="https://nodejs.org/api/crypto.html">the Node crypto module</a>. You could host it yourself, or download it and use it offline. It doesn't send data anywhere, and there's no back-end of any kind. It literally just takes your inputs, generates a password, and copies the generated password to the clipboard so that you can paste it somewhere immediately. In fact, it'd be simple enough to implement in Node itself without any kind of front-end so that it could be used as a command line tool. (You know, I might just do that right now...)</p>
+<h3>Disclaimer</h3>
+<p>As I've said before, I'm not a security expert, so feel free to check for yourself whether it works as intended or not (and please let me know if it doesn't). Anyway, enjoy! And let me know if you find it to be useful!</p>
+
+</section>
+  </body>
+</html>
