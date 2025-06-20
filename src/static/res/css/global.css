@@ -28,7 +28,7 @@ body {
   width: 768px;
   min-width: 768px;
   max-width: 768px;
-  margin: calc(var(--padding) * 3) auto;
+  margin: calc(var(--padding) * 3) auto calc(var(--padding) * 6) auto;
 }
 
 h1,
