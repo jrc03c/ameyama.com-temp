@@ -48,5 +48,5 @@ export default async function (config) {
   // Add pass-through file copy:
   // NOTE: This path is relative to the root of the project, *not* the input
   // directory!
-  config.addPassthroughCopy("src/static")
+  config.addPassthroughCopy({ "src/static": "./" })
 }
