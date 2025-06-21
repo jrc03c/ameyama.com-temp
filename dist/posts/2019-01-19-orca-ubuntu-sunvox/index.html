@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link
+  href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"
+  rel="stylesheet"
+  type="text/css" />
+<link href="/static/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1><a href="/">雨山</a></h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<h3>Setting Up Orca on Ubuntu 18.04.1 LTS with SunVox</h3>
+<h4>Sat, 19 Jan 2019 00:00:00 GMT by jrc03c</h4>
+
+<p>It's fairly straightforward to set up <a href="https://github.com/hundredrabbits/orca">ORCΛ</a> on Ubuntu for use with <a href="http://www.warmplace.ru/soft/sunvox/">SunVox</a>, and though I haven't really gotten a chance to do anything advanced with it yet, these instructions at least got me off the ground.</p>
+<p>Here's a video of the process. The written instructions are below.</p>
+<video width="100%" controls>
+	<source src="/media/orca-sunvox-linux.mp4">
+</video>
+<p>So, first, launch SunVox. Open the Preferences from the little menu at the top left. Select the MIDI submenu. Click on &quot;MIDI controller 1&quot; and choose &quot;Midi Through Port-0&quot; from the drop-down list. Then close the preferences.</p>
+<p>Next, launch Orca. Press CTRL+. to open the JavaScript console. Type:</p>
+<pre class="language-js"><code class="language-js">terminal<span class="token punctuation">.</span>io<span class="token punctuation">.</span>midi<span class="token punctuation">.</span><span class="token function">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>This will list the available MIDI controllers. Note the index (place) in the list of the device with the same name as the SunVox controller: &quot;Midi Through Port-0&quot;. Then type:</p>
+<pre class="language-js"><code class="language-js">terminal<span class="token punctuation">.</span>io<span class="token punctuation">.</span>midi<span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
+<p>I used <code>0</code> in this example because that was the index of the device with the name &quot;Midi Through Port-0&quot; on my machine, but your index might be different.</p>
+<p>Next, press CTRL+. to close the JS console. Now open an Orca project file. You can use one from the &quot;examples&quot; folder if you don't have any of your own yet. It should start playing automatically.</p>
+<p>Orca will control whatever instrument is currently selected in SunVox. So, to switch instruments, just click on a different module (synth, effect, etc.).</p>
+<p>And that's it! There are probably other and better ways to set it up, but since I know virtually nothing about MIDI, this is as far as I can take you. Good luck, and let me know how it goes!</p>
+
+</section>
+    <hr />
+  </body>
+</html>
