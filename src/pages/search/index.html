@@ -1,0 +1,32 @@
+---
+title: Search
+layout: page
+permalink: /search/
+---
+
+<style>
+  #search .row input[type="text"] {
+    width: 100%;
+    flex-shrink: 999999;
+  }
+
+  @media (max-width: 768px) {
+    #search .row input {
+      width: 100%;
+      flex-shrink: unset;
+    }
+
+    #search .row input[type="text"] {
+      margin-bottom: var(--padding);
+    }
+  }
+</style>
+
+<div id="search">
+  <form class="row" id="search-form">
+    <input id="search-form-text-input" placeholder="Some text" type="text" />
+    <input type="submit" value="Search" />
+  </form>
+</div>
+
+<script src="search-bundle.js"></script>

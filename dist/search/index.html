@@ -32,10 +32,35 @@
 
     <hr />
     <section>
-<h3>Public Domain Tapes</h3>
-<h4>Thu, 02 Apr 2020 00:00:00 GMT by jrc03c</h4>
+<h3>Search</h3>
 
-<p>I launched a podcast today! (Because, of course, that's what you do when you have too much time on your hands these days.) It's called <a href="https://publicdomaintapes.com/">Public Domain Tapes</a>! I've been pondering it for a long time, and I made the first episode a few months ago, but I could never seem to find the time to pull the trigger on it. But here it is! I'm going to try to work it into my schedule and make about one episode per month. Anyway, feel free to send me feedback! Enjoy!</p>
+
+<style>
+  #search .row input[type="text"] {
+    width: 100%;
+    flex-shrink: 999999;
+  }
+
+  @media (max-width: 768px) {
+    #search .row input {
+      width: 100%;
+      flex-shrink: unset;
+    }
+
+    #search .row input[type="text"] {
+      margin-bottom: var(--padding);
+    }
+  }
+</style>
+
+<div id="search">
+  <form class="row" id="search-form">
+    <input id="search-form-text-input" placeholder="Some text" type="text" />
+    <input type="submit" value="Search" />
+  </form>
+</div>
+
+<script src="search-bundle.js"></script>
 
 </section>
     <hr />
