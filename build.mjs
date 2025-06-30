@@ -7,8 +7,6 @@ import fs from "node:fs"
 import path from "node:path"
 import process from "node:process"
 
-let isRebuilding = false
-let lastRebuildStartTime
 let crawler
 const logFile = path.join(import.meta.dirname, "build-logs.json")
 
@@ -20,14 +18,33 @@ const logger = new Logger({ path: logFile })
 const PORT = 3000
 
 async function rebuild() {
-  isRebuilding = true
-  lastRebuildStartTime = new Date()
   logger.logInfo(`Rebuilding... (${new Date().toLocaleString()})`)
 
   try {
     execSync(`rm -rf dist`, { encoding: "utf8" })
     execSync(`mkdir -p dist`, { encoding: "utf8" })
     execSync(`npx @11ty/eleventy`, { encoding: "utf8" })
+
+    execSync(
+      `
+        npx esbuild \
+        src/pages/search/search.mjs \
+        --bundle \
+        --outfile=dist/search/search-bundle.js
+      `,
+      { encoding: "utf8" },
+    )
+
+    execSync(
+      `
+        npx esbuild \
+        src/pages/search/search-worker.mjs \
+        --bundle \
+        --outfile=dist/search/search-worker-bundle.js
+      `,
+      { encoding: "utf8" },
+    )
+
     logger.logSuccess("Done! 🎉")
 
     if (process.argv.includes("--watch") || process.argv.includes("-w")) {
@@ -65,13 +82,11 @@ async function rebuild() {
         logger.logWarning("Crawling stopped.")
       })
 
-      crawler.start("http://localhost:" + PORT)
+      // crawler.start("http://localhost:" + PORT)
     }
   } catch (e) {
     console.error(e)
   }
-
-  isRebuilding = false
 }
 
 if (process.argv.indexOf("-w") > -1 || process.argv.indexOf("--watch") > -1) {

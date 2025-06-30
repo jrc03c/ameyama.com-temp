@@ -1,4 +1,8 @@
 :root {
+  --border-radius: 4px;
+  --border-width: 1px;
+  --filter-hover: brightness(105%);
+  --filter-active: brightness(90%);
   --padding: 1rem;
 }
 
@@ -11,6 +15,7 @@ output,
 select,
 textarea {
   font-family: monospace;
+  box-sizing: border-box;
 }
 
 body,
@@ -86,11 +91,50 @@ img {
   max-width: 100%;
 }
 
+button,
+input,
+textarea {
+  padding: calc(var(--padding) / 4);
+  border: var(--border-width) solid black;
+  border-radius: var(--border-radius);
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+a:hover,
+button:hover,
+input[type="submit"]:hover {
+  filter: var(--filter-hover);
+}
+
+a:active,
+button:active,
+input[type="submit"]:active {
+  filter: var(--filter-active);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  gap: var(--padding);
+}
+
 @media (max-width: 768px) {
   body {
     margin: calc(var(--padding) * 3) var(--padding);
     width: calc(100vw - calc(var(--padding) * 2));
     min-width: calc(100vw - calc(var(--padding) * 2));
     max-width: calc(100vw - calc(var(--padding) * 2));
+  }
+
+  .row {
+    display: block;
   }
 }
