@@ -162,6 +162,10 @@
 
   // src/pages/search/search-worker.mjs
   var worker = new WebWorkerHelper();
+  var index;
+  worker.on("set-index", async (payload) => {
+    index = payload;
+  });
   worker.on("search", async (payload) => {
     console.log("searching for:", payload);
     return [];

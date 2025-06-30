@@ -42,7 +42,7 @@ async function buildSearchIndex(options) {
     }
   })
 
-  fs.writeFileSync(outfile, JSON.stringify(out, null, 2), "utf8")
+  fs.writeFileSync(outfile, JSON.stringify(out), "utf8")
   return out
 }
 
