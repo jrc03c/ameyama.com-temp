@@ -2,6 +2,7 @@ import { execSync } from "node:child_process"
 import { Logger } from "@jrc03c/logger"
 import { watch } from "@jrc03c/watch"
 import { WebCrawler } from "@jrc03c/web-crawler"
+import * as fsx from "@jrc03c/fs-extras"
 import express from "express"
 import fs from "node:fs"
 import path from "node:path"
@@ -16,6 +17,71 @@ if (!fs.existsSync(logFile)) {
 
 const logger = new Logger({ path: logFile })
 const PORT = 3000
+
+async function buildSearchIndex(options) {
+  options = options || {}
+  const dir = options.dir || path.join(import.meta.dirname, "dist")
+  const include = options.include || [/\.html$/]
+  const exclude = options.exclude || []
+
+  const outfile =
+    options.outfile ||
+    path.join(import.meta.dirname, "dist", "search", "search-index.json")
+
+  const files = fsx.findSync(
+    dir,
+    f =>
+      include.some(pattern => f.match(pattern)) &&
+      !exclude.some(pattern => f.match(pattern)),
+  )
+
+  const out = files.map(f => {
+    return {
+      file: f.replace(dir, ""),
+      raw: cleanWhitespace(fs.readFileSync(f, "utf8")),
+    }
+  })
+
+  fs.writeFileSync(outfile, JSON.stringify(out, null, 2), "utf8")
+  return out
+}
+
+async function buildSitemap(options) {
+  options = options || {}
+  const baseUrl = options.baseUrl || "https://ameyama.com"
+  const dir = options.dir || path.join(import.meta.dirname, "dist")
+  const include = options.include || [/\.html$/]
+  const exclude = options.exclude || []
+
+  const outfile =
+    options.outfile || path.join(import.meta.dirname, "dist", "sitemap.txt")
+
+  const files = fsx.findSync(
+    dir,
+    f =>
+      include.some(pattern => f.match(pattern)) &&
+      !exclude.some(pattern => f.match(pattern)),
+  )
+
+  const out = files
+    .map(f => f.replace(dir, baseUrl).replace(/index\.html$/, ""))
+    .toSorted((a, b) => (a < b ? -1 : 1))
+
+  fs.writeFileSync(outfile, out.join("\n"), "utf8")
+  return out
+}
+
+function cleanWhitespace(x) {
+  for (const char of ["\n", "\r", "\t"]) {
+    x = x.replaceAll(char, " ")
+  }
+
+  while (x.includes("  ")) {
+    x = x.replaceAll("  ", " ")
+  }
+
+  return x.trim()
+}
 
 async function rebuild() {
   logger.logInfo(`Rebuilding... (${new Date().toLocaleString()})`)
@@ -45,6 +111,8 @@ async function rebuild() {
       { encoding: "utf8" },
     )
 
+    await buildSearchIndex()
+    await buildSitemap()
     logger.logSuccess("Done! 🎉")
 
     if (process.argv.includes("--watch") || process.argv.includes("-w")) {
