@@ -161,13 +161,30 @@
   };
 
   // src/pages/search/search-worker.mjs
+  function cleanWhitespace(x) {
+    for (const v of ["\n", "\r", "	"]) {
+      x = x.replaceAll(v, " ");
+    }
+    while (x.includes("  ")) {
+      x = x.replaceAll("  ", " ");
+    }
+    return x.trim();
+  }
+  function removeHTML(x) {
+    return x.replaceAll(/<.*?>/gs, " ");
+  }
   var worker = new WebWorkerHelper();
   var index;
   worker.on("set-index", async (payload) => {
     index = payload;
   });
   worker.on("search", async (payload) => {
-    console.log("searching for:", payload);
-    return [];
+    payload = payload.toLowerCase();
+    return index.filter((doc) => {
+      if (!doc.cleaned) {
+        doc.cleaned = cleanWhitespace(removeHTML(doc.raw)).toLowerCase();
+      }
+      return doc.cleaned.includes(payload);
+    });
   });
 })();

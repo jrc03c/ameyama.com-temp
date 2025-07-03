@@ -15,6 +15,7 @@ output,
 select,
 textarea {
   font-family: monospace;
+  font-size: 14px;
   box-sizing: border-box;
 }
 
@@ -34,6 +35,37 @@ body {
   min-width: 768px;
   max-width: 768px;
   margin: calc(var(--padding) * 3) auto calc(var(--padding) * 6) auto;
+}
+
+h1,
+h1 * {
+  font-size: 2rem;
+}
+
+h2,
+h2 * {
+  font-size: 1.5rem;
+}
+
+h3,
+h3 * {
+  font-size: 1.25rem;
+}
+
+h4,
+h4 * {
+  font-size: 1.125rem;
+}
+
+h5,
+h5 * {
+  font-size: 1rem;
+}
+
+h6,
+h6 * {
+  font-size: 1rem;
+  color: gray;
 }
 
 h1,

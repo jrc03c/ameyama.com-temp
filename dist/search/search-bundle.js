@@ -163,13 +163,30 @@
   // src/pages/search/search.mjs
   window.addEventListener("load", async () => {
     const worker = new WebWorkerHelper("search-worker-bundle.js");
-    const form = document.querySelector("#search-form");
+    const container = document.querySelector("#search");
+    const form = container.querySelector("#search-form");
     const queryInput = form.querySelector("input[type='text']");
     const submitButton = form.querySelector("input[type='submit']");
+    const resultsContainer = container.querySelector("#search-results");
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
-      console.log(await worker.exec("search", queryInput.value));
+      const results = await worker.exec("search", queryInput.value);
+      resultsContainer.innerHTML = "";
+      results.forEach((result) => {
+        const el = document.createElement("div");
+        el.classList.add("search-result");
+        el.innerHTML = `
+        <div>
+          <a href="${result.file}">${result.file}</a>
+        </div>
+
+        <div>
+          ${result.cleaned}
+        </div>
+      `;
+        resultsContainer.appendChild(el);
+      });
     });
     queryInput.disabled = true;
     submitButton.disabled = true;
@@ -177,7 +194,7 @@
     const index = await (async () => {
       const cachedIndex = localStorage.getItem("search-index");
       if (cachedIndex) {
-        return cachedIndex;
+        return JSON.parse(cachedIndex);
       }
       const response = await fetch("search-index.json");
       const raw = await response.text();
