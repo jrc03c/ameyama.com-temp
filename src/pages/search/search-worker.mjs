@@ -1,22 +1,8 @@
+import { fuzzyFind } from "@jrc03c/js-text-tools"
 import { WebWorkerHelper } from "@jrc03c/web-worker-helper"
 
-function cleanWhitespace(x) {
-  for (const v of ["\n", "\r", "\t"]) {
-    x = x.replaceAll(v, " ")
-  }
-
-  while (x.includes("  ")) {
-    x = x.replaceAll("  ", " ")
-  }
-
-  return x.trim()
-}
-
-function removeHTML(x) {
-  return x.replaceAll(/<.*?>/gs, " ")
-}
-
 const worker = new WebWorkerHelper()
+const excerptPadding = 32
 let index
 
 worker.on("set-index", async payload => {
@@ -24,13 +10,36 @@ worker.on("set-index", async payload => {
 })
 
 worker.on("search", async payload => {
-  payload = payload.toLowerCase()
+  return fuzzyFind(
+    payload,
+    index.map(doc => doc.raw),
+  )
+    .filter(result => result.score < 0.1)
+    .map(result => {
+      result.excerpt = [
+        "",
+        ...result.matches.map(match => {
+          const index = result.doc.indexOf(match)
+          const start = Math.max(index - excerptPadding, 0)
 
-  return index.filter(doc => {
-    if (!doc.cleaned) {
-      doc.cleaned = cleanWhitespace(removeHTML(doc.raw)).toLowerCase()
-    }
+          const end = Math.min(
+            index + match.length + excerptPadding,
+            result.doc.length,
+          )
 
-    return doc.cleaned.includes(payload)
-  })
+          const left = result.doc.slice(start, index)
+
+          const middle =
+            "<b>" + result.doc.slice(index, index + match.length) + "</b>"
+
+          const right = result.doc.slice(index + match.length, end)
+          return left + middle + right
+        }),
+        "",
+      ].join(" ... ")
+
+      result.file = index.find(doc => doc.raw === result.doc).file
+      result.url = result.file.replace(/index\.html$/, "")
+      return result
+    })
 })

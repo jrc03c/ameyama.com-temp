@@ -173,16 +173,18 @@
       event.stopImmediatePropagation();
       const results = await worker.exec("search", queryInput.value);
       resultsContainer.innerHTML = "";
-      results.forEach((result) => {
+      const padLength = results.length.toString().length;
+      results.forEach((result, i) => {
         const el = document.createElement("div");
         el.classList.add("search-result");
         el.innerHTML = `
-        <div>
-          <a href="${result.file}">${result.file}</a>
-        </div>
+        <p>
+          ${(i + 1).toString().padStart(padLength, "0")}.
+          <a href="${result.url}">${result.url}</a>
+        </p>
 
         <div>
-          ${result.cleaned}
+          ${result.excerpt}
         </div>
       `;
         resultsContainer.appendChild(el);
