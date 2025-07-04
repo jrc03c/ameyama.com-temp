@@ -1,3 +1,4 @@
+import { collapseWhitespace } from "@jrc03c/js-text-tools"
 import { execSync } from "node:child_process"
 import { Logger } from "@jrc03c/logger"
 import { watch } from "@jrc03c/watch"
@@ -38,7 +39,7 @@ async function buildSearchIndex(options) {
   const out = files.map(f => {
     return {
       file: f.replace(dir, ""),
-      raw: cleanWhitespace(fs.readFileSync(f, "utf8")),
+      raw: collapseWhitespace(removeHTML(fs.readFileSync(f, "utf8"))),
     }
   })
 
@@ -69,18 +70,6 @@ async function buildSitemap(options) {
 
   fs.writeFileSync(outfile, out.join("\n"), "utf8")
   return out
-}
-
-function cleanWhitespace(x) {
-  for (const char of ["\n", "\r", "\t"]) {
-    x = x.replaceAll(char, " ")
-  }
-
-  while (x.includes("  ")) {
-    x = x.replaceAll("  ", " ")
-  }
-
-  return x.trim()
 }
 
 async function rebuild() {
@@ -155,6 +144,10 @@ async function rebuild() {
   } catch (e) {
     console.error(e)
   }
+}
+
+function removeHTML(x) {
+  return x.replaceAll(/<.*?>/gs, "").trim()
 }
 
 if (process.argv.indexOf("-w") > -1 || process.argv.indexOf("--watch") > -1) {
