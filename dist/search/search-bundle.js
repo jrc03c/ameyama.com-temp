@@ -171,24 +171,9 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
-      const results = await worker.exec("search", queryInput.value);
-      resultsContainer.innerHTML = "";
-      const padLength = results.length.toString().length;
-      results.forEach((result, i) => {
-        const el = document.createElement("div");
-        el.classList.add("search-result");
-        el.innerHTML = `
-        <p>
-          ${(i + 1).toString().padStart(padLength, "0")}.
-          <a href="${result.url}">${result.url}</a>
-        </p>
-
-        <div>
-          ${result.excerpt}
-        </div>
-      `;
-        resultsContainer.appendChild(el);
-      });
+      const url2 = new URL(window.location.href);
+      url2.searchParams.set("query", encodeURIComponent(queryInput.value));
+      window.location.href = url2.toString();
     });
     queryInput.disabled = true;
     submitButton.disabled = true;
@@ -211,5 +196,29 @@
     queryInput.disabled = false;
     submitButton.disabled = false;
     submitButton.value = "Search";
+    const url = new URL(window.location.href);
+    let query = url.searchParams.get("query");
+    if (query) {
+      query = decodeURIComponent(query);
+      queryInput.value = query;
+      const results = await worker.exec("search", query);
+      resultsContainer.innerHTML = "";
+      const padLength = results.length.toString().length;
+      results.forEach((result, i) => {
+        const el = document.createElement("div");
+        el.classList.add("search-result");
+        el.innerHTML = `
+        <p>
+          ${(i + 1).toString().padStart(padLength, "0")}.
+          <a href="${result.url}">${result.url}</a>
+        </p>
+
+        <div>
+          ${result.excerpt}
+        </div>
+      `;
+        resultsContainer.appendChild(el);
+      });
+    }
   });
 })();
