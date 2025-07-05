@@ -3295,11 +3295,6 @@
   }
   var vmultiply = vectorize(multiply);
 
-  // node_modules/@jrc03c/js-text-tools/node_modules/@jrc03c/js-math-tools/src/sum.mjs
-  function sum(arr, shouldDropNaNs) {
-    return stats(arr, { shouldDropNaNs }).sum;
-  }
-
   // node_modules/@jrc03c/js-text-tools/node_modules/@jrc03c/js-math-tools/src/exp.mjs
   function exp(x) {
     try {
@@ -3406,6 +3401,11 @@
     }
   }
   var vlog = vectorize(log);
+
+  // node_modules/@jrc03c/js-text-tools/node_modules/@jrc03c/js-math-tools/src/mean.mjs
+  function mean(arr, shouldDropNaNs) {
+    return stats(arr, { shouldDropNaNs }).mean;
+  }
 
   // node_modules/@jrc03c/js-text-tools/node_modules/@jrc03c/js-math-tools/src/mod.mjs
   function mod(a, b) {
@@ -3684,7 +3684,7 @@
     return sort(
       map(docs, (doc, i) => {
         const matches = [];
-        const docScore = sum(
+        const docScore = mean(
           map(queryNGrams, (ngram1) => {
             let lowestScore = Infinity;
             let lowestIndex = 0;
@@ -3898,14 +3898,20 @@
         "",
         ...result.matches.map((match) => {
           const index2 = result.doc.indexOf(match);
-          const start = Math.max(index2 - excerptPadding, 0);
-          const end = Math.min(
+          let start = Math.max(index2 - excerptPadding, 0);
+          while (start > 0 && !result.doc[start].match(/\s/)) {
+            start--;
+          }
+          let end = Math.min(
             index2 + match.length + excerptPadding,
             result.doc.length
           );
-          const left = result.doc.slice(start, index2).split(/\s/).slice(1).join(" ");
-          const middle = "<b>" + result.doc.slice(index2, index2 + match.length) + "</b>";
-          const right = result.doc.slice(index2 + match.length, end).split(/\s/).slice(0, -1).join(" ");
+          while (end < result.doc.length - 1 && !result.doc[end].match(/\s/)) {
+            end++;
+          }
+          const left = result.doc.slice(start, index2).replaceAll(/\s/g, " ").trimStart();
+          const middle = "<b>" + result.doc.slice(index2, index2 + match.length).replaceAll(/\s/g, " ") + "</b>";
+          const right = result.doc.slice(index2 + match.length, end).replaceAll(/\s/g, " ").trimEnd();
           return left + middle + right;
         }),
         ""

@@ -20,27 +20,37 @@ worker.on("search", async payload => {
         "",
         ...result.matches.map(match => {
           const index = result.doc.indexOf(match)
-          const start = Math.max(index - excerptPadding, 0)
+          let start = Math.max(index - excerptPadding, 0)
 
-          const end = Math.min(
+          while (start > 0 && !result.doc[start].match(/\s/)) {
+            start--
+          }
+
+          let end = Math.min(
             index + match.length + excerptPadding,
             result.doc.length,
           )
 
+          while (end < result.doc.length - 1 && !result.doc[end].match(/\s/)) {
+            end++
+          }
+
           const left = result.doc
             .slice(start, index)
-            .split(/\s/)
-            .slice(1)
-            .join(" ")
+            .replaceAll(/\s/g, " ")
+            .trimStart()
 
           const middle =
-            "<b>" + result.doc.slice(index, index + match.length) + "</b>"
+            "<b>" +
+            result.doc
+              .slice(index, index + match.length)
+              .replaceAll(/\s/g, " ") +
+            "</b>"
 
           const right = result.doc
             .slice(index + match.length, end)
-            .split(/\s/)
-            .slice(0, -1)
-            .join(" ")
+            .replaceAll(/\s/g, " ")
+            .trimEnd()
 
           return left + middle + right
         }),
