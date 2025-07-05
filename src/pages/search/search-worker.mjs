@@ -11,54 +11,53 @@ worker.on("set-index", async payload => {
 
 worker.on("search", async payload => {
   return fuzzyFind(
-    payload,
-    index.map(doc => doc.raw),
-  )
-    .filter(result => result.score < 0.1)
-    .map(result => {
-      result.excerpt = [
-        "",
-        ...result.matches.map(match => {
-          const index = result.doc.indexOf(match)
-          let start = Math.max(index - excerptPadding, 0)
+    payload.toLowerCase(),
+    index.map(doc => {
+      if (!doc.rawLower) {
+        doc.rawLower = doc.raw.toLowerCase()
+      }
 
-          while (start > 0 && !result.doc[start].match(/\s/)) {
+      return doc.rawLower
+    }),
+  )
+    .slice(0, 10)
+    .map(result => {
+      const doc = index.find(doc => doc.rawLower === result.doc)
+      result.url = doc.file.replace(/index\.html$/, "")
+
+      result.excerpt = result.matches
+        .map(match => {
+          const index = result.doc.indexOf(match)
+          let start = Math.max(0, index - excerptPadding)
+
+          let end = Math.min(
+            doc.raw.length,
+            index + match.length + excerptPadding,
+          )
+
+          while (start > 0 && !doc.raw[start].match(/\s/)) {
             start--
           }
 
-          let end = Math.min(
-            index + match.length + excerptPadding,
-            result.doc.length,
-          )
-
-          while (end < result.doc.length - 1 && !result.doc[end].match(/\s/)) {
+          while (end < doc.raw.length - 1 && !doc.raw[end].match(/\s/)) {
             end++
           }
 
-          const left = result.doc
-            .slice(start, index)
-            .replaceAll(/\s/g, " ")
-            .trimStart()
+          const left = doc.raw.slice(start, index).replaceAll(/\s/g, " ")
 
           const middle =
             "<b>" +
-            result.doc
-              .slice(index, index + match.length)
-              .replaceAll(/\s/g, " ") +
+            doc.raw.slice(index, index + match.length).replaceAll(/\s/g, " ") +
             "</b>"
 
-          const right = result.doc
+          const right = doc.raw
             .slice(index + match.length, end)
             .replaceAll(/\s/g, " ")
-            .trimEnd()
 
           return left + middle + right
-        }),
-        "",
-      ].join(" ... ")
+        })
+        .join(" ... ")
 
-      result.file = index.find(doc => doc.raw === result.doc).file
-      result.url = result.file.replace(/index\.html$/, "")
       return result
     })
 })

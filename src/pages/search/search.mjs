@@ -63,7 +63,7 @@ window.addEventListener("load", async () => {
 
       el.innerHTML = `
         <p>
-          ${(i + 1).toString().padStart(padLength, "0")}.
+          <b>${(i + 1).toString().padStart(padLength, "0")}.</b>
           <a href="${result.url}">${result.url}</a>
         </p>
 
