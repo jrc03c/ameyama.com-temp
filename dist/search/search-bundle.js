@@ -209,7 +209,7 @@
         el.classList.add("search-result");
         el.innerHTML = `
         <p>
-          ${(i + 1).toString().padStart(padLength, "0")}.
+          <b>${(i + 1).toString().padStart(padLength, "0")}.</b>
           <a href="${result.url}">${result.url}</a>
         </p>
 

@@ -3891,33 +3891,34 @@
   });
   worker.on("search", async (payload) => {
     return fuzzyFind(
-      payload,
-      index.map((doc) => doc.raw)
-    ).filter((result) => result.score < 0.1).map((result) => {
-      result.excerpt = [
-        "",
-        ...result.matches.map((match) => {
-          const index2 = result.doc.indexOf(match);
-          let start = Math.max(index2 - excerptPadding, 0);
-          while (start > 0 && !result.doc[start].match(/\s/)) {
-            start--;
-          }
-          let end = Math.min(
-            index2 + match.length + excerptPadding,
-            result.doc.length
-          );
-          while (end < result.doc.length - 1 && !result.doc[end].match(/\s/)) {
-            end++;
-          }
-          const left = result.doc.slice(start, index2).replaceAll(/\s/g, " ").trimStart();
-          const middle = "<b>" + result.doc.slice(index2, index2 + match.length).replaceAll(/\s/g, " ") + "</b>";
-          const right = result.doc.slice(index2 + match.length, end).replaceAll(/\s/g, " ").trimEnd();
-          return left + middle + right;
-        }),
-        ""
-      ].join(" ... ");
-      result.file = index.find((doc) => doc.raw === result.doc).file;
-      result.url = result.file.replace(/index\.html$/, "");
+      payload.toLowerCase(),
+      index.map((doc) => {
+        if (!doc.rawLower) {
+          doc.rawLower = doc.raw.toLowerCase();
+        }
+        return doc.rawLower;
+      })
+    ).slice(0, 10).map((result) => {
+      const doc = index.find((doc2) => doc2.rawLower === result.doc);
+      result.url = doc.file.replace(/index\.html$/, "");
+      result.excerpt = result.matches.map((match) => {
+        const index2 = result.doc.indexOf(match);
+        let start = Math.max(0, index2 - excerptPadding);
+        let end = Math.min(
+          doc.raw.length,
+          index2 + match.length + excerptPadding
+        );
+        while (start > 0 && !doc.raw[start].match(/\s/)) {
+          start--;
+        }
+        while (end < doc.raw.length - 1 && !doc.raw[end].match(/\s/)) {
+          end++;
+        }
+        const left = doc.raw.slice(start, index2).replaceAll(/\s/g, " ");
+        const middle = "<b>" + doc.raw.slice(index2, index2 + match.length).replaceAll(/\s/g, " ") + "</b>";
+        const right = doc.raw.slice(index2 + match.length, end).replaceAll(/\s/g, " ");
+        return left + middle + right;
+      }).join(" ... ");
       return result;
     });
   });
