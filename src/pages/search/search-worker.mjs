@@ -27,12 +27,21 @@ worker.on("search", async payload => {
             result.doc.length,
           )
 
-          const left = result.doc.slice(start, index)
+          const left = result.doc
+            .slice(start, index)
+            .split(/\s/)
+            .slice(1)
+            .join(" ")
 
           const middle =
             "<b>" + result.doc.slice(index, index + match.length) + "</b>"
 
-          const right = result.doc.slice(index + match.length, end)
+          const right = result.doc
+            .slice(index + match.length, end)
+            .split(/\s/)
+            .slice(0, -1)
+            .join(" ")
+
           return left + middle + right
         }),
         "",
