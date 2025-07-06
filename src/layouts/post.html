@@ -2,7 +2,12 @@
 layout: default
 ---
 
-<h3>{{ title }}</h3>
-<h4>{{ page.date | to-locale-date-string }} by {{ site.author }}</h4>
+<div class="post">
+  <h3 class="title">{{ title }}</h3>
 
-{{ content }}
+  <p class="details">
+    {{ page.date | to-locale-date-string }} by {{ site.author }}
+  </p>
+
+  {{ content }}
+</div>
