@@ -11,7 +11,9 @@
 
   </head>
   <body>
-    <h1><a href="/">雨山</a></h1>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
 
 <nav>
   <ul>
@@ -32,10 +34,14 @@
 
     <hr />
     <section>
-<h3>Procedural Puzzle Follow-Up #1</h3>
-<h4>Thu, 28 May 2015 00:00:00 GMT by jrc03c</h4>
+<div class="post">
+  <h3 class="title">Procedural Puzzle Follow-Up #1</h3>
 
-<p>So, I've been doing some thinking about my <a href="/blog/2015/05/26/Procedural-Puzzle-Game-Generation/">procedural puzzle game generation algorithm</a>, and I've come to a few more conclusions. When I've come to a sufficiently large number of conclusions, I'll probably re-write that article, or make it a page, or both.</p>
+  <p class="details">
+    Thu, 28 May 2015 00:00:00 GMT by jrc03c
+  </p>
+
+  <p>So, I've been doing some thinking about my <a href="/blog/2015/05/26/Procedural-Puzzle-Game-Generation/">procedural puzzle game generation algorithm</a>, and I've come to a few more conclusions. When I've come to a sufficiently large number of conclusions, I'll probably re-write that article, or make it a page, or both.</p>
 <p>Here's the first thought: I don't know why I put &quot;make a start node&quot; as the first step, since what really matters is just that the <em>graph itself</em> be generated first. <em>Then</em>, if you like, you can select the start and goal nodes. The reason that this realization is important is that it'll free me to up generate the world much more organically and less prefabricatedly (maybe), and then worry about the locks and keys.</p>
 <p>Here's the process I'm going to try to follow for generating the world, then. (NOTE: I haven't done any research on this, so these steps are just off the top of my head and will probably fail to work completely.)</p>
 <ol>
@@ -52,6 +58,7 @@
 </ol>
 <p>With all these steps done, we'll <em>probably</em> be in a position to run the rest of the algorithm and actually lock down these &quot;edges&quot; (connections) and place keys around the world. I'm going to try it out!</p>
 
+</div>
 </section>
     <hr />
   </body>

@@ -11,7 +11,9 @@
 
   </head>
   <body>
-    <h1><a href="/">雨山</a></h1>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
 
 <nav>
   <ul>
@@ -32,10 +34,14 @@
 
     <hr />
     <section>
-<h3>Watercolor</h3>
-<h4>Fri, 18 Sep 2015 00:00:00 GMT by jrc03c</h4>
+<div class="post">
+  <h3 class="title">Watercolor</h3>
 
-<p>I probably mentioned that I've been trying to make a little virtual study in Unity. But I've run into one small nag: I don't really like the extraordinarily low-poly, textureless feel needed to achieve acceptable speeds on my janky old iPhone 4. (Don't get me wrong; that art style is great for some projects ... it's just not good for this one.) So I've been working towards making a 2D, texture-only version. I've also wanted a more unusual art style, so I spent today creating a watercolor algorithm. In broad strokes, it uses a very slightly modified version of the <em>K</em>-means algorithm. Here it is in a little more detail:</p>
+  <p class="details">
+    Fri, 18 Sep 2015 00:00:00 GMT by jrc03c
+  </p>
+
+  <p>I probably mentioned that I've been trying to make a little virtual study in Unity. But I've run into one small nag: I don't really like the extraordinarily low-poly, textureless feel needed to achieve acceptable speeds on my janky old iPhone 4. (Don't get me wrong; that art style is great for some projects ... it's just not good for this one.) So I've been working towards making a 2D, texture-only version. I've also wanted a more unusual art style, so I spent today creating a watercolor algorithm. In broad strokes, it uses a very slightly modified version of the <em>K</em>-means algorithm. Here it is in a little more detail:</p>
 <p>
 	<ol style="list-style-type:decimal">
 		<li><b>Draw the original image.</b></li>
@@ -65,6 +71,7 @@
 <p><em>After:</em></p>
 <img class="center-block img-responsive" src="/media/watercolor_final.png">
 
+</div>
 </section>
     <hr />
   </body>

@@ -11,7 +11,9 @@
 
   </head>
   <body>
-    <h1><a href="/">雨山</a></h1>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
 
 <nav>
   <ul>
@@ -32,16 +34,21 @@
 
     <hr />
     <section>
-<h3>Direbase</h3>
-<h4>Wed, 03 Oct 2018 00:00:00 GMT by jrc03c</h4>
+<div class="post">
+  <h3 class="title">Direbase</h3>
 
-<blockquote>
+  <p class="details">
+    Wed, 03 Oct 2018 00:00:00 GMT by jrc03c
+  </p>
+
+  <blockquote>
 <p><strong>NOTE:</strong> These tools have been archived.</p>
 </blockquote>
 <p>As part of my de-Googling, I've been meaning to start migrating my projects away from Firebase, which has been hard because it's just so damn useful. <em>But</em> I've started building my own open-source BaaS / backendless / no-backend alternative called <a href="https://gitlab.com/jrc03c/direbase">Direbase</a>. So far, it's extremely sparse --- only supporting username / password authentication and simple databasing --- and it's almost certainly not very secure. (Seriously. I don't know what I'm doing.) But it's been <em>so much fun</em> to make, and even more fun to see in action. The databasing relies on <a href="https://gitlab.com/jrc03c/filedb">FileDB</a>, an open-source, dependency-free database solution for Node that I just built as well.</p>
 <p>I've migrated my Notes app over to it, though I've left the old Firebase version up for public consumption (since I use it as part of my portfolio). If I ever get around to tightening up security on Direbase, I may point all of my apps to it.</p>
 <p>If you decide you want to try it out, let me know! And also, don't run anything mission-critical on it! Enjoy!</p>
 
+</div>
 </section>
     <hr />
   </body>

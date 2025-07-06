@@ -11,7 +11,9 @@
 
   </head>
   <body>
-    <h1><a href="/">雨山</a></h1>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
 
 <nav>
   <ul>
@@ -32,10 +34,14 @@
 
     <hr />
     <section>
-<h3>Procedural Puzzle Game Generation</h3>
-<h4>Tue, 26 May 2015 00:00:00 GMT by jrc03c</h4>
+<div class="post">
+  <h3 class="title">Procedural Puzzle Game Generation</h3>
 
-<p>So, I've been working on a procedural puzzle game generation algorithm. I should stress that this algorithm produces puzzle <em>games</em>, not necessarily puzzles themselves ... though I suppose that if a game is filled with puzzles, then it is itself a kind of puzzle. Nevertheless, I wanted to share my algorithm here both as a reference for myself and as inspiration for others.</p>
+  <p class="details">
+    Tue, 26 May 2015 00:00:00 GMT by jrc03c
+  </p>
+
+  <p>So, I've been working on a procedural puzzle game generation algorithm. I should stress that this algorithm produces puzzle <em>games</em>, not necessarily puzzles themselves ... though I suppose that if a game is filled with puzzles, then it is itself a kind of puzzle. Nevertheless, I wanted to share my algorithm here both as a reference for myself and as inspiration for others.</p>
 <p>Before I show you the algorithm and some examples, let me clarify a few bits of terminology. I'll be using (probably not entirely accurately) words from graph theory, as well as the words <em>lock</em> and <em>key</em>. The words from graph theory, such as <em>node</em> and <em>edge</em>, will be used in their normal, technical sense, though I suppose I should note that nodes don't necessarily always represent locations; sometimes, they may represent states of the game. The words <em>lock</em> and <em>key</em>, however, must be expanded. In this article, anything is a <em>lock</em> if it modifies the edge of a graph to make it untraversable or extremely costly to traverse. And a <em>key</em>, then, is anything that modifies a locked edge to make it traversable or cheap to traverse. An obvious example, of course, is of a physical lock and physical key, where the physical lock modifies the passage (edge) between two rooms (nodes) to make it untraversable, and the key makes it traversable again. But let's remember that the terminology works equally well for states as it does for locations. For example, imagine that you've received an enciphered note that can only be deciphered by use of an algorithm (like ROT13). The two relevant nodes in this case are (1) the state in which you do not understand the contents of the note and (2) the state in which you do understand the contents of the note. The relevant edge between these two nodes is the reading of the note; it's the &quot;passageway&quot; between the two states. The encryption of the note acts as a lock on the edge, preventing reading (i.e., passage). And, of course, the function (ROT13 or whatever) acts as a key to that lock, allowing passage through the edge. Lastly, I should also like to add that locks are allowed to require multiple keys. The Doors of Durin from <em>The Lord of the Rings</em> are a great example of this, as they require both moonlight / starlight and a password.</p>
 <p>With those terms clarified, I should also say that what this algorithm does is create a graph and place locks and keys on the edges and nodes ... but it does not know anything about what <em>kind</em> of locks or keys or nodes or edges these are. Therefore, it is (for now) up to the designer to implement the exact nature of those pieces.</p>
 <p>All right. Now we're in a position to look at an overview of the algorithm. Here it is in broad strokes:</p>
@@ -67,6 +73,7 @@
 <p>Sixth, the more I think about it, the less sure I am that what I've created is actually a &quot;puzzle&quot; game generator. After all, I mentioned near the beginning that a lock could be anything that makes an edge impassable --- <em>including monsters</em>. But if monsters are included, then it almost seems as though any sort of adventure game could be created ... even games that have no &quot;puzzle&quot; elements at all! I'm too dull to see whether what I'm working on is game form in general, or puzzle form in general, or some combination of the two, or something even more basic, more general (like <a href="http://en.wikipedia.org/wiki/Knot_theory">knot theory</a>). And also, although I stressed at the beginning that nodes weren't just locations but could also represent states, it's still really hard to think in terms of states; it's so much easier to imagine each node to be a place. So, I don't know what that means.</p>
 <p>Whew! So, what thoughts do you have?</p>
 
+</div>
 </section>
     <hr />
   </body>

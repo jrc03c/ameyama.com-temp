@@ -11,7 +11,9 @@
 
   </head>
   <body>
-    <h1><a href="/">雨山</a></h1>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
 
 <nav>
   <ul>
@@ -32,10 +34,14 @@
 
     <hr />
     <section>
-<h3>Site Update</h3>
-<h4>Fri, 31 May 2019 00:00:00 GMT by jrc03c</h4>
+<div class="post">
+  <h3 class="title">Site Update</h3>
 
-<blockquote>
+  <p class="details">
+    Fri, 31 May 2019 00:00:00 GMT by jrc03c
+  </p>
+
+  <blockquote>
 <p><strong>UPDATE #2:</strong> Well, in the end, I didn't like this new build system very much. I mean, parts of it were nice, but it ended up feeling overly complicated. Also, I just like JS-free sites so damn much. So, we're back to Jekyll again!</p>
 </blockquote>
 <blockquote>
@@ -46,6 +52,7 @@
 <p>I went back and forth about making this change for a long time because I really like JS-free sites. The web has become so bloated that the vast majority of sites are a pain to use. The old version of this site didn't have JS at all, and it was super fast, and I loved that about it. But I also decided eventually that it wasn't necessary to throw the baby out with the bath water and that I could still have a relatively fast site that incorporated JS. There are probably lighter frameworks than Vue out there that would've made things even faster, but Vue is the one I know best, so it made the most sense for me right now. And perhaps there's a trade-off between speed and flexibility, but in this case, I was willing to trade what I saw as a massive increase in flexibility for a negligible (or maybe even non-existent) decrease in speed. I also see this as an experiment, and I'll be keeping a close eye on it for the next few weeks and months to see if it was worth it. Obviously, as the number of posts becomes increasingly large, the whole-site JSON file will grow proportionally, and the time to download will grow proportionally. In that sense, static files would win easily in a speed contest. So, maybe it'll make sense eventually to do something else, like compiling only an index for the posts and downloading only that index on the front end initially --- until a user requests a particular page, at which time I'd download and parse the Markdown file client-side. In fact, I may start working on something like that next.</p>
 <p>Anyway, if you're interested in looking through the source, it's <a href="https://gitlab.com/jrc03c/ameyama.com">here</a>. Later!</p>
 
+</div>
 </section>
     <hr />
   </body>

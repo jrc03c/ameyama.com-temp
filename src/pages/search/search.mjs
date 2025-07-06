@@ -58,7 +58,7 @@ window.addEventListener("load", async () => {
     const padLength = results.length.toString().length
 
     results.forEach((result, i) => {
-      const el = document.createElement("div")
+      const el = document.createElement("blockquote")
       el.classList.add("search-result")
 
       el.innerHTML = `
