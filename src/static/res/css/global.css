@@ -95,7 +95,6 @@ body {
   margin: 0 0 var(--spacing-xl) 0;
   padding: 0;
   border: 0;
-  background-color: var(--color-purple);
 }
 
 body {
@@ -120,7 +119,7 @@ textarea {
 }
 
 *::selection {
-  background-color: var(--color-pink);
+  background-color: var(--color-purple);
   color: black;
 }
 
@@ -162,7 +161,7 @@ h5 * {
 h6,
 h6 * {
   font-size: 1rem;
-  color: var(--color-gray-3);
+  color: var(--color-gray-5);
 }
 
 h1,
@@ -260,7 +259,7 @@ blockquote {
   padding: var(--spacing);
   border: var(--border-width) solid black;
   border-radius: var(--border-radius);
-  background-color: var(--color-purple-light);
+  background-color: var(--color-grey-9);
   box-shadow: var(--shadow);
 }
 
@@ -300,7 +299,7 @@ blockquote {
 }
 
 a {
-  color: var(--color-purple-very-dark);
+  color: var(--color-pink-dark);
   text-decoration: none;
 }
 
@@ -348,7 +347,7 @@ hr {
 
 .page .details,
 .post .details {
-  color: var(--color-purple-very-dark);
+  color: var(--color-grey-5);
 }
 
 @media (max-width: 768px) {
