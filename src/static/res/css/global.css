@@ -356,6 +356,16 @@ nav ul li {
   list-style-type: none;
 }
 
+nav a {
+  font-weight: bold;
+}
+
+nav a::before {
+  content: "➔";
+  margin-right: var(--spacing-sm);
+  color: var(--color-grey-5);
+}
+
 .post:has(.title + .details) .title {
   margin-bottom: 0;
 }
