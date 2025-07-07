@@ -3901,7 +3901,7 @@
     ).slice(0, 10).map((result) => {
       const doc = index.find((doc2) => doc2.rawLower === result.doc);
       result.url = doc.file.replace(/index\.html$/, "");
-      result.excerpt = result.matches.map((match) => {
+      result.excerpt = "... " + result.matches.map((match) => {
         const index2 = result.doc.indexOf(match);
         let start = Math.max(0, index2 - excerptPadding);
         let end = Math.min(
@@ -3918,7 +3918,7 @@
         const middle = "<b>" + doc.raw.slice(index2, index2 + match.length).replaceAll(/\s/g, " ") + "</b>";
         const right = doc.raw.slice(index2 + match.length, end).replaceAll(/\s/g, " ");
         return left + middle + right;
-      }).join(" ... ");
+      }).join(" ... ").trim() + " ...";
       return result;
     });
   });
