@@ -25,13 +25,39 @@
     <li>
       <a href="/blog/">Blog</a>
     </li>
-
-    <li>
-      <a href="/search/">Search</a>
-    </li>
   </ul>
 </nav>
 
+
+    <hr />
+    <style>
+  #search-bar #search-form {
+    margin: 0 0 var(--spacing) 0;
+  }
+
+  #search-bar .row input[type="text"] {
+    width: 100%;
+    flex-shrink: 999999;
+  }
+
+  @media (max-width: 768px) {
+    #search-bar .row input {
+      width: 100%;
+      flex-shrink: unset;
+    }
+
+    #search-bar .row input[type="text"] {
+      margin-bottom: var(--spacing);
+    }
+  }
+</style>
+
+<div id="search-bar">
+  <form action="/search" class="row" id="search-form">
+    <input name="query" placeholder="Some text" type="text" />
+    <input class="bg-turquoise" type="submit" value="Search" />
+  </form>
+</div>
 
     <hr />
     <section>
@@ -39,34 +65,7 @@
   <h3 class="title">Search</h3>
 
   
-<style>
-  #search #search-form {
-    margin: 0 0 var(--spacing) 0;
-  }
-
-  #search .row input[type="text"] {
-    width: 100%;
-    flex-shrink: 999999;
-  }
-
-  @media (max-width: 768px) {
-    #search .row input {
-      width: 100%;
-      flex-shrink: unset;
-    }
-
-    #search .row input[type="text"] {
-      margin-bottom: var(--spacing);
-    }
-  }
-</style>
-
 <div id="search">
-  <form class="row" id="search-form">
-    <input placeholder="Some text" type="text" />
-    <input class="bg-turquoise" type="submit" value="Search" />
-  </form>
-
   <div class="bg-yellow notification">
     <b>NOTE:</b>
     The search functionality is still under construction and not very good yet.
@@ -83,8 +82,8 @@
     <hr />
 
     <div class="bg-yellow notification">
-      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
-      fixing them!
+      <b>NOTE:</b>
+      A bunch of links around the site are dead. I'm working on fixing them!
     </div>
   </body>
 </html>
