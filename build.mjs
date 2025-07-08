@@ -8,13 +8,7 @@ import fs from "node:fs"
 import path from "node:path"
 import process from "node:process"
 
-const logFile = path.join(import.meta.dirname, "build-logs.json")
-
-if (!fs.existsSync(logFile)) {
-  fs.writeFileSync(logFile, "", "utf8")
-}
-
-const logger = new Logger({ path: logFile })
+const logger = new Logger({ path: "/tmp" })
 const PORT = 3000
 
 async function buildSearchIndex(options) {
