@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Install Proton VPN in Fedora Silverblue</h3>
+
+  <blockquote>
+<p><strong>NOTE:</strong> These instructions are based on <a href="https://protonvpn.com/support/official-linux-vpn-fedora/">the official instructions for installing Proton VPN in &quot;regular&quot; Fedora</a>.</p>
+</blockquote>
+<ol>
+<li>Import the repo:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> rpm-ostree <span class="token function">install</span> <span class="token string">"https://repo.protonvpn.com/fedora-<span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> /etc/fedora-release <span class="token operator">|</span> <span class="token function">cut</span> -d<span class="token string">' '</span> <span class="token parameter variable">-f</span> <span class="token number">3</span><span class="token variable">)</span></span>-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.2-1.noarch.rpm"</span></code></pre>
+<ol start="2">
+<li>
+<p>Reboot.</p>
+</li>
+<li>
+<p>You can try installing the app directly using:</p>
+</li>
+</ol>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> rpm-ostree <span class="token function">install</span> proton-vpn-gnome-app</code></pre>
+<p>But it will likely fail with an error letting you know that the GPG verification process didn't work. Proton mentions this in <a href="https://protonvpn.com/support/official-linux-vpn-ubuntu/">their Ubuntu installation instructions</a>:</p>
+<blockquote>
+<p>&quot;Please <strong>don’t try  to check the GPG signature of this release package</strong> (<code>dpkg-sig –verify</code>). Our internal release process is split into several part and the release package is signed with a GPG key, and the repo is signed with another GPG key. So the keys don’t match.&quot;</p>
+</blockquote>
+<p>While they <em>don't</em> mention this problem in the Fedora instructions, I suspect that it may still apply. If that's the case, then it means that you'll have to temporarily disable GPG verification for the repo, which is really not recommended. You can do this by modifying the <code>/etc/yum.repos.d/protonvpn-stable.repo</code> file. Specifically, set these key-value pairs:</p>
+<pre><code>gpgcheck = 0
+repo_gpgcheck = 0
+</code></pre>
+<p>Once you've made those changes and saved the file, then you can retry the installation, which should now work:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> rpm-ostree <span class="token function">install</span> proton-vpn-gnome-app</code></pre>
+<ol start="4">
+<li>
+<p>Reboot.</p>
+</li>
+<li>
+<p>Optionally, re-enable GPG verification for the repo by editing the <code>/etc/yum.repos.d/protonvpn-stable.repo</code> file and modifying the key-value pairs you set above:</p>
+</li>
+</ol>
+<pre><code>gpgcheck = 1
+repo_gpgcheck = 1
+</code></pre>
+<p>Of course, re-enabling GPG verification likely means that you won't be able to update the app in the future. I don't actually know whether lack of GPG verification or lack of updates is the lesser of two evils, so I'm not sure whether or not GPG verification ought to be re-enabled. Anyway, hopefully Proton will get their shit together someday and make GPG verification work so that we won't have to do these kinds of unsafe things.</p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

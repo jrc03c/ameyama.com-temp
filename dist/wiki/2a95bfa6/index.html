@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">`mkcert` with Node</h3>
+
+  <p><a href="https://github.com/FiloSottile/mkcert"><code>mkcert</code></a> makes it easy to serve local content (i.e., localhost) over HTTPS. By default, however, Node-based servers (e.g., Express) won't accept mkcert's certificates; so you have to set this environment variable:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">NODE_EXTRA_CA_CERTS</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span>mkcert <span class="token parameter variable">-CAROOT</span><span class="token variable">)</span></span>/rootCA.pem"</span></code></pre>
+<p><strong>Source:</strong> <a href="https://github.com/FiloSottile/mkcert?tab=readme-ov-file#using-the-root-with-nodejs">https://github.com/FiloSottile/mkcert?tab=readme-ov-file#using-the-root-with-nodejs</a></p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Search focus in Visual Studio Code (VSCode)</h3>
+
+  <p>It is now the case in VSCode that if you click on a file in the explorer (tree) view and then press CTRL+F to search, you'll end up searching for files and folders in the explorer, <em>not</em> for text in an open file. To fix this incredibly stupid &quot;feature&quot;, use the keybinding from <a href="https://code.visualstudio.com/updates/v1_70#_tree-find-control">here</a>:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"key"</span><span class="token operator">:</span> <span class="token string">"ctrl+f"</span><span class="token punctuation">,</span>
+  <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"-list.find"</span><span class="token punctuation">,</span>
+  <span class="token property">"when"</span><span class="token operator">:</span> <span class="token string">"listFocus &amp;&amp; listSupportsFind"</span>
+<span class="token punctuation">}</span></code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

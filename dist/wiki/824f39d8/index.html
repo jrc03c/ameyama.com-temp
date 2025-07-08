@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Install Cinnamon (X11) on Fedora Silverblue</h3>
+
+  <pre><code>sudo rpm-ostree refresh-md
+sudo rpm-ostree install cinnamon cinnamon-session gnome-session-xsession
+</code></pre>
+<p>I'm not totally sure if the <code>cinnamon-session</code> package is necessary, but the <code>gnome-session-xsession</code> definitely <em>is</em> required to be able to run the X11 version of Cinnamon. Without it, only the experimental Wayland version of Cinnamon will be installed.</p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Encrypting a partition with LUKS in Linux</h3>
+
+  <p><strong>Set up an encrypted partition</strong></p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># format the encryption using luks</span>
+<span class="token function">sudo</span> cryptsetup luksFormat /dev/sdXY
+
+<span class="token comment"># open the partition</span>
+<span class="token function">sudo</span> cryptsetup luksOpen /dev/sdXY some_name
+
+<span class="token comment"># create a filesystem</span>
+<span class="token function">sudo</span> mkfs.ext4 /dev/mapper/some_name
+
+<span class="token comment"># close the partition</span>
+<span class="token function">sudo</span> cryptsetup luksClose some_name</code></pre>
+<p><strong>Mount the partition</strong></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> cryptsetup luksOpen /dev/sdXY some_name
+<span class="token function">sudo</span> <span class="token function">mount</span> /dev/mapper/some_name /some/path</code></pre>
+<p><strong>Unmount the partition</strong></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">umount</span> /some/path
+<span class="token function">sudo</span> cryptsetup luksClose some_name</code></pre>
+<p><strong>Add extra keys</strong></p>
+<p>My RaspberryPI doesn't have enough memory to open a partition that's been encrypted with LUKS2 (the default scheme used above). One solution to this problem is to add an extra key that requires less memory to use. The first step is to see which key slots have already been used:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> cryptsetup luksDump /dev/sdXY</code></pre>
+<p>If you've just finished setting up the partition using the steps above, then you'll probably have only used key slot #0, in which case key slot #1 should be open. To specify that we want to use slot #1, we pass the <code>-S</code> option in the following command; and to specify that we want to use a less memory-intensive scheme, we pass the <code>--pbkdf</code> option:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> cryptsetup luksAddKey <span class="token parameter variable">-S</span> <span class="token number">1</span> <span class="token parameter variable">--pbkdf</span> pbkdf2 /dev/sdXY</code></pre>
+<p>Finally, when we're ready to mount the partition on a machine with low memory, we use the same <code>luksOpen</code> command as above but also add the <code>-S</code> option to indicate that we intend to target key slot #1:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> cryptsetup luksOpen <span class="token parameter variable">-S</span> <span class="token number">1</span> /dev/sdXY some_name</code></pre>
+<p>(You can also use this low-memory strategy to configure the partition for the first time instead of using it to add a key after the partition has already been configured!)</p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

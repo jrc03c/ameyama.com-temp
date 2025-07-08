@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Custom screenshot scripts in KDE</h3>
+
+  <p>The option to take quick screenshots that (1) don't launch the Spectacle GUI and (2) copy the resulting image to the clipboard <em>do not exist</em> for some unknown reason in KDE. I had to create custom keyboard shortcuts that invoked the following commands in order to achieve that functionality.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># copy fullscreen screenshot to clipboard</span>
+spectacle <span class="token parameter variable">-bcf</span>
+
+<span class="token comment"># copy manually-selected rectangular region to clipboard</span>
+spectacle <span class="token parameter variable">-bcr</span></code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

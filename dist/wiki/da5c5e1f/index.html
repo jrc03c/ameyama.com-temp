@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Running a script on reboot using `systemd` (instead of `cron`)</h3>
+
+  <ol start="0">
+<li>
+<p>(Optional) Study the example service definitions in <code>/usr/lib/systemd/system</code>.</p>
+</li>
+<li>
+<p>Create a new service file in <code>/etc/systemd/system</code> with a &quot;.service&quot; extension. Here's an example that will run a bash script at boot time:</p>
+</li>
+</ol>
+<pre><code>[Unit]
+Description=A Simple Script
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/bin/bash /path/to/script.sh
+Type=simple
+User=josh
+Group=josh
+WorkingDirectory=/home/josh
+Restart=on-failure
+</code></pre>
+<ol start="2">
+<li>Start the service once.</li>
+</ol>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl daemon-reload
+<span class="token function">sudo</span> systemctl start <span class="token operator">&lt;</span>whatever<span class="token operator">></span>.service</code></pre>
+<ol start="3">
+<li>If the above worked, then set it to run every time the computer restarts.</li>
+</ol>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> <span class="token operator">&lt;</span>whatever<span class="token operator">></span>.service</code></pre>
+<blockquote>
+<p><strong>NOTE:</strong> According to <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html">the docs</a>: &quot;...shell command lines are not directly supported. If shell command lines are to be used, they need to be passed explicitly to a shell implementation of some kind. Example:&quot;</p>
+<p><code>ExecStart=sh -c 'dmesg | tac'&quot;</code></p>
+</blockquote>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

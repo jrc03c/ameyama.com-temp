@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">GuidedTrack cheat sheet</h3>
+
+  <h1>Data</h1>
+<h2>Start and finish times</h2>
+<p>The columns <code>&quot;Time Started (UTC)&quot;</code> and <code>&quot;Time Finished (UTC)&quot;</code> capture start and finish times of users completing a GuidedTrack program. However, not all users complete programs, so think carefully about whether to use one column or the other when filtering user data by datetime!</p>
+<h1>Events</h1>
+<h2>Page events</h2>
+<blockquote>
+<p><strong>NOTE:</strong> The events described below are undocumented and unofficial! They may change or disappear entirely without warning! If you use them for something mission-critical, then make sure you test constantly, even after your program has been published!</p>
+</blockquote>
+<p>These events are emitted when pages start and end:</p>
+<ul>
+<li><code>&quot;guidedtrack:pageStart&quot;</code></li>
+<li><code>&quot;guidedtrack:pageEnd&quot;</code></li>
+</ul>
+<p>To listen for them, do:</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"guidedtrack:pageStart"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">$</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"guidedtrack:pageEnd"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>In most cases, the two events are triggered in almost immediate succession because GuidedTrack pages typically load all at once. However, there are cases in which a page may not load all at once. For example:</p>
+<pre><code>-- &quot;guidedtrack:pageStart&quot; is triggered here
+
+Here's some text.
+
+*wait: 30.seconds
+
+Here's some more text.
+
+*wait: 30.seconds
+
+*question: Why?
+
+-- &quot;guidedtrack:pageEnd&quot; is triggered here ~60 seconds after
+-- &quot;guidedtrack:pageStart&quot; was triggered
+</code></pre>
+<h1>HTTP requests</h1>
+<p>Generally, HTTP requests are fairly straightforward. However, I recently discovered an edge case with an unusual solution.</p>
+<p>According to Richard, the <code>&quot;Content-Type&quot;: &quot;application/json&quot;</code> header is hard-coded into all requests. However, some servers expect requests to include <code>&quot;multipart/form-data&quot;</code> data. The solution seems to be that the data to be sent should be encoded as query string parameters, like this:</p>
+<pre><code>&gt;&gt; foo = &quot;FOO!&quot;
+&gt;&gt; bar = &quot;BAR!&quot;
+
+*service: Some Service
+  *method: POST
+  *path: /some/endpoint?foo={foo}&amp;bar={bar}
+  *success
+    Success!
+  *error
+    Error!
+</code></pre>
+<p>Although the above worked for my specific use case (which involved calling the Mailgun API), it's not clear if all servers will respond so nicely to requests encoded as <code>&quot;application/json&quot;</code> when what they really want is <code>&quot;multipart/form-data&quot;</code>. I tried setting a <code>&quot;Content-Type&quot;: &quot;multipart/form-data&quot;</code> header in the program settings, but it didn't seem to make a difference, presumably because (as Richard said) the content type is already hard-coded into the request. I need to investigate this further.</p>
+<h1>Hacks &amp; workarounds</h1>
+<h2>Too much recursion</h2>
+<p>When running a <code>*while</code> loop for a long time, a &quot;too much recursion&quot; error is occasionally thrown to the console, and the program halts. (This is odd because I'd always assumed <code>while</code> loops in any language were iterative. But maybe I'm wrong!) To work around this, insert a meaningless <code>*trigger</code>, like this:</p>
+<pre><code>&gt;&gt; i = 0
+
+*while: i &lt; 999999999
+  &gt;&gt; i = i + 1
+  *trigger: some-nonexistent-event
+</code></pre>
+<h2>Force a page break</h2>
+<pre><code>*html
+	&lt;style&gt;
+		#countdown { visibility: hidden !important; }
+	&lt;/style&gt;
+
+*question: {&quot;&quot;}
+	*countdown: 0.1.seconds
+	*classes: hidden
+</code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

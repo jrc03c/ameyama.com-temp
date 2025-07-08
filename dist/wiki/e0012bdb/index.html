@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Install `virt-manager` in Fedora Silverblue</h3>
+
+  <p>Installing <code>virt-manager</code> alone is unsuccessful. For whatever reason, it doesn't pull in all of the relevant dependencies. So it's necessary to install all of these components:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> rpm-ostree <span class="token function">install</span> virt-install virt-manager virt-viewer</code></pre>
+<p>Then reboot! ☺️</p>
+<h2>Sources:</h2>
+<ul>
+<li><a href="https://discussion.fedoraproject.org/t/best-way-to-install-libvirt-and-virt-manager-on-silverblue/30700/4">&quot;Best way to install libvirt and virt-manager on silverblue&quot;</a></li>
+</ul>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

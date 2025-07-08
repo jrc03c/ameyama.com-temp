@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Converting between text file types using `pandoc`</h3>
+
+  <pre class="language-bash"><code class="language-bash"><span class="token comment"># syntax:</span>
+pandoc <span class="token operator">&lt;</span>src<span class="token operator">></span> <span class="token parameter variable">-f</span> <span class="token operator">&lt;</span>src_format<span class="token operator">></span> <span class="token parameter variable">-t</span> <span class="token operator">&lt;</span>dest_format<span class="token operator">></span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-o</span> <span class="token operator">&lt;</span>dest<span class="token operator">></span>
+
+<span class="token comment"># for example, convert epub to plaintext:</span>
+pandoc file.epub <span class="token parameter variable">-f</span> epub <span class="token parameter variable">-t</span> plain <span class="token parameter variable">-s</span> <span class="token parameter variable">-o</span> file.txt</code></pre>
+<p>The <code>-s</code> flag means &quot;standalone&quot;. From the <code>man</code> pages:</p>
+<blockquote>
+<p>Produce output with an appropriate header and footer (e.g. a standalone HTML, LaTeX, TEI, or RTF file, not a fragment). This option is set automatically for pdf, epub, epub3, fb2, docx, and odt output. For native output, this option causes metadata to be included; otherwise, metadata is suppressed.</p>
+</blockquote>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

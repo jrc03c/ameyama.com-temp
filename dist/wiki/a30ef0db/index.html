@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Fix app icons in KDE</h3>
+
+  <p>In KDE, app icons are often replaced with a generic <a href="https://duckduckgo.com/?t=ffab&amp;q=wayland+icon&amp;iax=images&amp;ia=images">Wayland icon</a>. Since this is both incorrect and horrible, here's a manual way to fix it (on a per-application basis).</p>
+<ol>
+<li>When an application window is open, right-click on the titlebar.</li>
+<li>Select &quot;More Actions&quot; → &quot;Configure Special Application Settings&quot;.</li>
+<li>In the window that opens, click the &quot;Add Property&quot; button near the bottom.</li>
+<li>In the pop-up, select &quot;Desktop file name&quot;.</li>
+<li>In the settings of the new property, select &quot;Force&quot; from the dropdown, and enter the name of the <code>.desktop</code> file that includes the correct application settings (i.e., that includes the correct icon). For example, if the relevant <code>.desktop</code> file is located at <code>/usr/share/appliations/my-cool-app.desktop</code>, then enter &quot;my-cool-app&quot; in the text field.</li>
+<li>Click the &quot;Apply&quot; and &quot;Okay&quot; buttons at the bottom of the window. The app icon should be changed immediately.</li>
+</ol>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

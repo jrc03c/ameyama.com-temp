@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Configure Syncthing as a system service</h3>
+
+  <ol>
+<li>
+<p>Create the user who should run the service, or choose an existing one.</p>
+</li>
+<li>
+<p>Copy the system syncthing@.service file into the load path of the system instance. Replace <code>&lt;user&gt;</code> with the name of the user who'll own the service.</p>
+</li>
+</ol>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">cp</span> /usr/lib/systemd/system/syncthing@.service /etc/systemd/system/syncthing@<span class="token operator">&lt;</span>user<span class="token operator">></span>.service</code></pre>
+<p>(NOTE: The above paths make sense in Ubuntu, but they may not be correct in other Linux distros.)</p>
+<ol start="3">
+<li>Enable and start the service. Replace <code>&lt;user&gt;</code> with the actual Syncthing user after the @:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">systemctl <span class="token builtin class-name">enable</span> syncthing@<span class="token operator">&lt;</span>user<span class="token operator">></span>.service
+systemctl start syncthing@<span class="token operator">&lt;</span>user<span class="token operator">></span>.service</code></pre>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://docs.syncthing.net/users/autostart.html#how-to-set-up-a-system-service">Syncthing: How to set up a system service</a></li>
+</ul>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

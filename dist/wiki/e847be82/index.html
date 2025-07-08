@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Python cheat sheet</h3>
+
+  <h3>Pad a string:</h3>
+<pre class="language-python"><code class="language-python"><span class="token comment"># padding on the left</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"234"</span><span class="token punctuation">.</span>rjust<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 0000000234</span>
+
+<span class="token comment"># padding on the right</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"234"</span><span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 2340000000</span></code></pre>
+<h3>Use getters, setters, and deleters:</h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Foo</span><span class="token punctuation">:</span>
+  <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    self<span class="token punctuation">.</span>_value <span class="token operator">=</span> <span class="token boolean">None</span>
+
+  <span class="token decorator annotation punctuation">@property</span>
+  <span class="token keyword">def</span> <span class="token function">value</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>_value
+
+  <span class="token decorator annotation punctuation">@value<span class="token punctuation">.</span>setter</span>
+  <span class="token keyword">def</span> <span class="token function">value</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> new_value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    self<span class="token punctuation">.</span>_value <span class="token operator">=</span> new_value
+
+  <span class="token decorator annotation punctuation">@value<span class="token punctuation">.</span>deleter</span>
+  <span class="token keyword">def</span> <span class="token function">value</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">del</span> self<span class="token punctuation">.</span>_x</code></pre>
+<h3>Read an environment variable:</h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"WHATEVS"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<h3>Check if a file or folder exists:</h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token string">"/some/path"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h3>Check if a path is a file or folder:</h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span><span class="token string">"/some/path"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span><span class="token string">"/some/path"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h3>Get the size of a file:</h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>getsize<span class="token punctuation">(</span><span class="token string">"/path/to/file"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h3>Pad numbers:</h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"{:07d}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 0000003</span></code></pre>
+<h3>Get the absolute path of a script:</h3>
+<pre class="language-python"><code class="language-python">__file__</code></pre>
+<blockquote>
+<p><strong>NOTE:</strong> In the above example, <code>__file__</code> returns the path to the script <em>in which that variable name is referenced</em>, not the path of the script that was invoked. For example, consider the following situation. At the root of a project, I have a script called <code>foo.py</code> that imports a function from <code>a/b/c/bar.py</code> in the same project. The function in <code>a/b/c/bar.py</code> references <code>__file__</code>. Like this:</p>
+<pre class="language-python"><code class="language-python"><span class="token comment"># foo.py</span>
+<span class="token keyword">from</span> a<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c<span class="token punctuation">.</span>bar <span class="token keyword">import</span> bar
+bar<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-python"><code class="language-python"><span class="token comment"># a/b/c/bar.py</span>
+<span class="token keyword">def</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">print</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span></code></pre>
+<pre class="language-bash"><code class="language-bash">python foo.py
+<span class="token comment"># /path/to/project/a/b/c/bar.py</span></code></pre>
+</blockquote>
+<h3>Get the absolute path of the directory containing a script:</h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token builtin">dir</span> <span class="token operator">=</span> <span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>sep<span class="token punctuation">)</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>__file__<span class="token punctuation">.</span>split<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>sep<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p><strong>NOTE:</strong> See the note in the previous section regarding <code>__file__</code>.</p>
+</blockquote>
+<h3>Run an external (e.g., Bash) command:</h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> process
+command <span class="token operator">=</span> <span class="token string">"ls -la"</span>
+subprocess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>command<span class="token punctuation">,</span> shell<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> executable<span class="token operator">=</span><span class="token string">"/bin/bash"</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p><strong>NOTE:</strong> According to <a href="https://www.baeldung.com/linux/python-run-bash-command">this</a> article: &quot;If we pass a single string as a command to <code>subprocess.run()</code>, then the value of the argument must be <code>True</code> for the <code>shell</code> parameter. Otherwise, we must pass the command as a list of strings, and <code>shell</code> must be <code>False</code>.&quot;</p>
+</blockquote>
+<h3>Serialize and deserialize an object:</h3>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> pickle
+
+my_obj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"hello"</span><span class="token punctuation">:</span> <span class="token string">"world"</span> <span class="token punctuation">}</span>
+
+<span class="token comment"># note the "wb" argument:</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"my_file.pkl"</span><span class="token punctuation">,</span> <span class="token string">"wb"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+  pickle<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>my_obj<span class="token punctuation">,</span> <span class="token builtin">file</span><span class="token punctuation">,</span> protocol<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token comment"># note the "rb" argument:</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"my_file.pkl"</span><span class="token punctuation">,</span> <span class="token string">"rb"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+  my_new_obj <span class="token operator">=</span> pickle<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p><strong>NOTE:</strong> There are serious security implications involved in this ☝️ process. The sklearn <a href="https://scikit-learn.org/stable/model_persistence.html">&quot;Model persistence&quot;</a> page has a good summary of the different serialization tools.</p>
+</blockquote>
+<blockquote>
+<p><strong>NOTE:</strong> Also note that deserialization (at least with <code>pickle</code>) will fail if any of the relevant resources haven't yet been loaded. For example, if the object being deserialized has a property pointing to a function called <code>foo</code>, then <code>foo</code> must be loaded <em>before</em> deserialization can occur.</p>
+</blockquote>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

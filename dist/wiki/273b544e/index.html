@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Back up a (Flatpak-based) Gnome Boxes VM</h3>
+
+  <p>Generally, the Gnome Boxes docs <a href="https://gnome.pages.gitlab.gnome.org/gnome-boxes/backup.html">here</a> should work when Flatpak is <em>not</em> involved. But when working with the Flatpak-based Gnome Boxes, the following steps must be used to back up a VM.</p>
+<pre><code># enter the flatpak's sandboxed environment
+flatpak run --command=bash org.gnome.Boxes
+
+# list the gnome boxes domain names
+virsh -c qemu:///session list --all
+
+# dump the target vm's config to xml
+virsh dumpxml $VM &gt; $VM.xml
+
+# locate the target vm's disk image
+ls ~/.var/app/org.gnome.Boxes/data/gnome-boxes/images/
+
+# copy both the config xml and the disk image to a backup location
+cp $VM.xml /some/backup/path/
+
+cp \
+	~/.var/app/org.gnome.Boxes/data/gnome-boxes/images/$VM \
+    /some/backup/path/
+</code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

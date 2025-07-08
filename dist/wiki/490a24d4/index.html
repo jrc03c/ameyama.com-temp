@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Verifying signatures for Qubes OS</h3>
+
+  <p><strong>NOTE:</strong> For all of the commands below, using <code>gpg</code> seems to work just as well as <code>gpg2</code>.</p>
+<ol>
+<li>Fetch the Qubes Master Signing Key:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">gpg2 --fetch-keys https://keys.qubes-os.org/keys/qubes-master-signing-key.asc</code></pre>
+<ol start="2">
+<li>List the keys you currently have and find the ID of the QMSK:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">gpg2 <span class="token parameter variable">-k</span></code></pre>
+<ol start="3">
+<li>Verify the fingerprint of the QMSK by comparing it to multiple independent sources:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">gpg2 <span class="token parameter variable">--fingerprint</span> <span class="token operator">&lt;</span>QMSK_ID<span class="token operator">></span></code></pre>
+<ol start="4">
+<li>Set the QMSK's trust level to &quot;ultimate&quot;:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">gpg2 --edit-key <span class="token operator">&lt;</span>QMSK_ID<span class="token operator">></span></code></pre>
+<p>The above command opens a little GPG REPL. In there, do:</p>
+<pre><code>fpr
+trust
+q
+</code></pre>
+<p>And then confirm that the trust level was applied correctly:</p>
+<pre class="language-bash"><code class="language-bash">gpg2 <span class="token parameter variable">-k</span> <span class="token string">"Qubes Master Signing Key"</span></code></pre>
+<ol start="5">
+<li>Download the release signing key that corresponds to the ISO you downloaded. (Usually, the signing key is listed right below the ISO file link on the downloads page.) Be sure to replace the dummy filename below with the signing key's actual filename.</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">gpg2 --keyserver-options no-self-sigs-only,no-import-clean <span class="token parameter variable">--import</span> path/to/qubes-release-X-signing-key.asc</code></pre>
+<ol start="6">
+<li>Confirm that the release signing key was signed by the master key:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">gpg2 --check-signatures <span class="token string">"Qubes OS Release X Signing Key"</span></code></pre>
+<ol start="7">
+<li>Make sure that the release signing key has &quot;full&quot; trust:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">gpg2 <span class="token parameter variable">-k</span> <span class="token string">"Qubes OS Release X Signing Key"</span></code></pre>
+<ol start="8">
+<li>Download the hash values that correspond to the ISO you downloaded. (Usually, the hash values file is listed right below the ISO file link on the downloads page.) Be sure to replace the dummy filename below with the <code>.DIGESTS</code> file's actual filename.</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">sha512sum <span class="token parameter variable">-c</span> path/to/Qubes-X-x86_64.iso.DIGESTS</code></pre>
+<p>You should see something like:</p>
+<pre><code>Qubes-X-x86_64.iso: OK
+sha512sum: WARNING: 23 lines are improperly formatted
+</code></pre>
+<ol start="9">
+<li>Verify that the <code>.DIGESTS</code> file was signed by the release signing key:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">gpg2 <span class="token parameter variable">-v</span> <span class="token parameter variable">--verify</span> path/to/Qubes-X-x86_64.iso.DIGESTS</code></pre>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://groups.google.com/g/qubes-devel/c/RqR9WPxICwg/m/kaQwknZPDHkJ">mailing lists</a></li>
+<li><a href="https://forum.qubes-os.org/t/1441/9">discussion forums</a></li>
+<li><a href="https://twitter.com/rootkovska/status/496976187491876864">social media #1</a></li>
+<li><a href="https://www.reddit.com/r/Qubes/comments/5bme9n/fingerprint_verification/">social media #2</a></li>
+<li><a href="https://andrewdavidwong.com/fingerprints.txt">personal websites</a></li>
+<li><a href="https://hyperelliptic.org/PSC/slides/psc2015_qubesos.pdf">slides from a talk</a></li>
+<li><a href="https://twitter.com/legind/status/813847907858337793/photo/2">t-shirt</a></li>
+<li><a href="https://youtu.be/S0TVw7U3MkE?t=2563">recording of a presentation</a></li>
+<li><a href="https://www.qubes-os.org/security/verifying-signatures/">&quot;Verifying signatures&quot; @ Qubes</a></li>
+</ul>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

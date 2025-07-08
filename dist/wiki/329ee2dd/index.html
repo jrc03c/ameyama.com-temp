@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Dot products as sums of outer products</h3>
+
+  <p>It's possible to write a matrix dot product as (1) a sum of a dot product and some outer products, or (2) a sum of outer products. This may be useful when trying to solve for a single column or row of a matrix.</p>
+<p>These should all produce identical results:</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+
+<span class="token comment"># define a scoring function where 1.0 is the highest (and best) possible score</span>
+<span class="token keyword">def</span> <span class="token function">r_squared</span><span class="token punctuation">(</span>true<span class="token punctuation">,</span> pred<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  num <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">(</span>true <span class="token operator">-</span> pred<span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span>
+  den <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">(</span>true <span class="token operator">-</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>true<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">-</span> num <span class="token operator">/</span> den
+
+A <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>normal<span class="token punctuation">(</span>size<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+B <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>normal<span class="token punctuation">(</span>size<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># regular ol' dot product</span>
+C1 <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>A<span class="token punctuation">,</span> B<span class="token punctuation">)</span>
+
+<span class="token comment"># the sum of a dot product (after replacing the last column in A and the last row in B</span>
+<span class="token comment"># with zeros) and an outer product (of the last column in A and the last row in B)</span>
+ATemp <span class="token operator">=</span> A<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ATemp<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> A<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>A<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+BTemp <span class="token operator">=</span> B<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+BTemp<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span>B<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>B<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+C2 <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>ATemp<span class="token punctuation">,</span> BTemp<span class="token punctuation">)</span> <span class="token operator">+</span> np<span class="token punctuation">.</span>outer<span class="token punctuation">(</span>A<span class="token punctuation">[</span>A<span class="token punctuation">.</span>columns<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> B<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span>B<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># the sum of outer products of each column of A with each corresponding row of B</span>
+C3 <span class="token operator">=</span> <span class="token boolean">None</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> A<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">if</span> C3 <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+    C3 <span class="token operator">=</span> np<span class="token punctuation">.</span>outer<span class="token punctuation">(</span>A<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> B<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">else</span><span class="token punctuation">:</span>
+    C3 <span class="token operator">+=</span> np<span class="token punctuation">.</span>outer<span class="token punctuation">(</span>A<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> B<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>r_squared<span class="token punctuation">(</span>C1<span class="token punctuation">,</span> C2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 1.0</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>r_squared<span class="token punctuation">(</span>C1<span class="token punctuation">,</span> C3<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 1.0</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>r_squared<span class="token punctuation">(</span>C2<span class="token punctuation">,</span> C3<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 1.0</span></code></pre>
+<p>Note also that an outer product of two vectors is the same as a dot product between a column vector and a row vector. Column vectors can be thought of matrices full of zeros <em>except for</em> a single column of values. Similarly, row vectors can be thought of as matrices full of zeros <em>except for</em> a single row of values. For example:</p>
+<pre><code># a column vector; i.e., a matrix of zeros with a single column of values
+a = np.array([
+  [1, 0, 0],
+  [2, 0, 0],
+  [3, 0, 0],
+])
+
+# a row vector; i.e., a matrix of zeros with a single row of values
+b = np.array([
+  [4, 5, 6],
+  [0, 0, 0],
+  [0, 0, 0],
+])
+
+print(np.dot(a, b))
+# array([[ 4,  5,  6],
+#        [ 8, 10, 12],
+#        [12, 15, 18]])
+
+print(np.outer(a[:, 0], b[0, :]))
+# array([[ 4,  5,  6],
+#        [ 8, 10, 12],
+#        [12, 15, 18]])
+</code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

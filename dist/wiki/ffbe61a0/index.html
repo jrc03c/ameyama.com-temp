@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Run a Node script as a process that never dies</h3>
+
+  <pre class="language-bash"><code class="language-bash"><span class="token function">nohup</span> <span class="token function">node</span> script.js <span class="token operator">></span> /dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span></code></pre>
+<ol>
+<li><code>nohup</code> means: Do not terminate this process even when the stty is cut off.</li>
+<li><code>&gt; /dev/null</code> means: stdout goes to /dev/null (which is a dummy device that does not record any output).</li>
+<li><code>2&gt;&amp;1</code> means: stderr also goes to the stdout (which is already redirected to /dev/null). You may replace &amp;1 with a file path to keep a log of errors, e.g.: 2&gt;/tmp/myLog</li>
+<li><code>&amp;</code> at the end means: run this command as a background task.</li>
+</ol>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://stackoverflow.com/a/11856575">https://stackoverflow.com/a/11856575</a></li>
+</ul>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

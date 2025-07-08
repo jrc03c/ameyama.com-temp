@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Fixing Gnome's screenshot tool</h3>
+
+  <p>Sometimes, Gnome's screenshot tool, <code>gnome-screenshot</code>, fails to copy any image data to the clipboard. The following commands can be invoked instead as a workaround.</p>
+<p>Screenshot (full screen):</p>
+<pre class="language-bash"><code class="language-bash">gnome-screenshot <span class="token parameter variable">-cf</span> /tmp/test <span class="token operator">&amp;&amp;</span> <span class="token function">cat</span> /tmp/test</code></pre>
+<p>Screenshot (area selection):</p>
+<pre class="language-bash"><code class="language-bash">gnome-screenshot <span class="token parameter variable">-acf</span> /tmp/test <span class="token operator">&amp;&amp;</span> <span class="token function">cat</span> /tmp/test</code></pre>
+<p>(The only difference between the two is the lack of <code>-a</code> flag in the first command.)</p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Encrypt a file with a password in Linux</h3>
+
+  <h2>Encrypt</h2>
+<pre class="language-bash"><code class="language-bash">gpg <span class="token parameter variable">-c</span> <span class="token operator">&lt;</span>some-file<span class="token operator">></span></code></pre>
+<p>You'll probably be prompted for a password.</p>
+<h2>Decrypt</h2>
+<pre class="language-bash"><code class="language-bash">gpg <span class="token parameter variable">-d</span> <span class="token operator">&lt;</span>some-file<span class="token operator">></span>.gpg</code></pre>
+<p>You might be prompted for a password here. If not, it means that GPG has cached the password for temporary use. To disable this (or to decrease the cache TTL), create and/or edit the <code>~/.gnupg/gpg-agent.conf</code> file with these lines:</p>
+<pre><code>default-cache-ttl 0
+max-cache-ttl 0
+</code></pre>
+<p>The above lines will set the cache TTLs to 0 seconds. Once those changes have been implemented, you'll have to reload the configuration using:</p>
+<pre class="language-bash"><code class="language-bash">gpgconf <span class="token parameter variable">--reload</span> all</code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

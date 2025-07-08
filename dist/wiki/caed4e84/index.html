@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Typescript notes</h3>
+
+  <h2>Bundling</h2>
+<ol>
+<li>Transpile TS files using <code>tsc</code>:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">npx tsc path/to/main.ts</code></pre>
+<p>(Note the <code>*.ts</code> extension! 👆)</p>
+<ol start="2">
+<li>Bundle transpiled JS files:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">npx esbuild path/to/main.js <span class="token parameter variable">--bundle</span> <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span></code></pre>
+<p>(Note the <code>*.js</code> extension! 👆)</p>
+<h2>Importing</h2>
+<p>Importing works the same way in TS as in modern JS:</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">// person.ts</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span></code></pre>
+<pre class="language-js"><code class="language-js"><span class="token comment">// main.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Person <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./person"</span>
+<span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span></code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

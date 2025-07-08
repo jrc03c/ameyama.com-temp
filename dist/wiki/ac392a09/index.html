@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">JS cheat sheet</h3>
+
+  <h2>Bundling</h2>
+<p>When to bundle:</p>
+<ul>
+<li>when the project's output is a website or callable script (i.e., not a library)</li>
+<li>when it's important to distribute the dependencies along with the project
+<ul>
+<li>this is probably most useful in cases of IIFE scripts in the browser</li>
+</ul>
+</li>
+<li>when it's important to minify the project to reduce its size</li>
+</ul>
+<p>When <em>not</em> to bundle:</p>
+<ul>
+<li>when the project's output is a library (i.e., not a website or callable script) that will be consumed by other developers</li>
+<li>when the project will only be used in a Node context</li>
+</ul>
+<p>By &quot;callable script&quot; in the above lists, I mean something that's exported via the <code>&quot;bin&quot;</code> field in the project's <code>package.json</code> and which is installable via <code>npm link</code> or <code>npm i -g</code>.</p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

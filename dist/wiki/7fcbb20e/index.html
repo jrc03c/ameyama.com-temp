@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Split a file into many parts and then rejoin them</h3>
+
+  <h2>Split the files</h2>
+<p>By number of lines per file:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">split</span> <span class="token parameter variable">-l</span> <span class="token number">100</span> myFile myFileSplit</code></pre>
+<p>Where &quot;myFileSplit&quot; is the prefix that will be applied to each splitted file; e.g.: myFileSplit.a, myFileSplit.b, etc.</p>
+<p>By resulting file sizes:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">split</span> <span class="token parameter variable">-b</span> 64k myFile myFileSplit</code></pre>
+<h2>Re-join the files</h2>
+<pre class="language-bash"><code class="language-bash"><span class="token function">cat</span> myFileSplit* <span class="token operator">>></span> myFile</code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

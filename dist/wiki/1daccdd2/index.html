@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">JS: CommonJS vs. ECMAScript Modules</h3>
+
+  <h2>File names</h2>
+<p>The convention nowadays (I think) is to use either <code>.js</code> or <code>.mjs</code> to denote ES module format and <code>.cjs</code> to denote CommonJS format. Even though they're all technically optional (I think), it's probably best to use <code>.mjs</code> and <code>.cjs</code> all the time to avoid ambiguity.</p>
+<h2>Import / export</h2>
+<h3>Exporting</h3>
+<pre class="language-js"><code class="language-js"><span class="token comment">// in a library's `index.js` file</span>
+<span class="token keyword">import</span> bar <span class="token keyword">from</span> <span class="token string">"./bar.js"</span>
+<span class="token keyword">import</span> baz <span class="token keyword">from</span> <span class="token string">"./baz.js"</span>
+<span class="token keyword">import</span> foo <span class="token keyword">from</span> <span class="token string">"./foo.js"</span>
+
+<span class="token comment">// using named exports</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span> bar<span class="token punctuation">,</span> baz<span class="token punctuation">,</span> foo <span class="token punctuation">}</span>
+
+<span class="token comment">// using a default export</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  bar<span class="token punctuation">,</span>
+  baz<span class="token punctuation">,</span>
+  foo<span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+<p>It <em>seems</em> like the above exported objects should be identical — and they are at least in the sense that they're defined the same way. But from the perspective of an outside consumer, they are <em>not</em> the same thing. You'd get errors if, for example, you only used named exports but then tried to import the default value:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> MyCoolLibrary <span class="token keyword">from</span> <span class="token string">"./path/to/index.js"</span> <span class="token comment">// ERROR!</span></code></pre>
+<p>Similarly, if you only used the default export but then tried to import named values, you'd get errors:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> bar <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./path/to/index.js"</span> <span class="token comment">// ERROR!</span></code></pre>
+<p>In other words, files that only use named exports <em>must</em> be imported using the <code>import { someName } from &quot;./some-package.js&quot;</code> syntax; and files that only use default exports <em>must</em> be imported using the <code>import SomePackage from &quot;./some-package.js&quot;</code> syntax. However, it is possible to use both named and default exports within the same file, as illustrated in the <code>index.js</code> example above.</p>
+<h3>Importing</h3>
+<p>Here's an example that imports from the above <code>index.js</code> file:</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">// using named imports</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> bar<span class="token punctuation">,</span> baz<span class="token punctuation">,</span> foo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./path/to/index.js"</span></code></pre>
+<pre class="language-js"><code class="language-js"><span class="token comment">// using the default import</span>
+<span class="token keyword">import</span> MyCoolLibrary <span class="token keyword">from</span> <span class="token string">"./path/to/index.js"</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> bar<span class="token punctuation">,</span> baz<span class="token punctuation">,</span> foo <span class="token punctuation">}</span> <span class="token operator">=</span> MyCoolLibrary</code></pre>
+<h2>Setup modifications</h2>
+<p>Some or all of the changes mentioned below (and perhaps others not mentioned!) must be made so that packages can be bundled, used in the browser, imported in Node, etc.</p>
+<ol>
+<li>In <code>package.json</code>, add a <code>&quot;type&quot;: &quot;module&quot;</code> key-value pair:</li>
+</ol>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"module"</span>
+<span class="token punctuation">}</span></code></pre>
+<ol start="2">
+<li>For bundling, change the bundle format. For example, in esbuild, add the <code>--format=esm</code> flag:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash">npx esbuild src/index.js <span class="token parameter variable">--bundle</span> <span class="token parameter variable">--format</span><span class="token operator">=</span>esm <span class="token parameter variable">--minify</span> <span class="token parameter variable">--outfile</span><span class="token operator">=</span>dist/bundle.js</code></pre>
+<ol start="3">
+<li>In the browser, add the <code>type=&quot;module&quot;</code> attribute to the relevant <code>&lt;script&gt;</code> elements:</li>
+</ol>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> MyCoolLibrary <span class="token keyword">from</span> <span class="token string">"./dist/bundle.js"</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<p>Note that it may be important for bundling and code-splitting purposes whether things are imported from the production bundle (as in the example above) or from the source code itself (e.g., <code>import _ from &quot;./src/index.js&quot;</code>).</p>
+<ol start="4">
+<li>From what I understand, Jest unfortunately only has experimental, unstable support for ES modules. For running tests in the meantime, replace Jest with <a href="https://www.npmjs.com/package/@jrc03c/fake-jest">my Jest copycat tool</a> that's designed to work with ES modules:</li>
+</ol>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall --save-dev jest
+<span class="token function">npm</span> <span class="token function">install</span> --save-dev @jrc03c/fake-jest</code></pre>
+<p>And run it just like Jest:</p>
+<pre><code>npx fake-jest
+</code></pre>
+<h3>Bundling considerations</h3>
+<p>It may be a good idea to bundle <em>all</em> libraries regardless of (1) browser vs. Node usage, (2) number of source files, or (3) dependence on other libraries. That's because there are lots of subtle little pitfalls related to using a library in Node vs. in the browser vs. in a bundle, etc., and bundling can make it a little easier for consumers to avoid those pitfalls. Therefore, my current recommendation is that all libraries should provide bundles for each relevant target. For example, here are some <code>esbuild</code> configurations for outputting three bundles: a Node / CommonJS / <code>require</code> version, an ESM / <code>import</code> version, and a &quot;standalone&quot; (IIFE) version:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># Node / CommonJS / `require`</span>
+npx esbuild src/index.js <span class="token parameter variable">--bundle</span> <span class="token parameter variable">--platform</span><span class="token operator">=</span>node <span class="token parameter variable">--outfile</span><span class="token operator">=</span>dist/lib.require.cjs
+
+<span class="token comment"># ESM / `import`</span>
+npx esbuild src/index.js <span class="token parameter variable">--bundle</span> <span class="token parameter variable">--format</span><span class="token operator">=</span>esm <span class="token parameter variable">--outfile</span><span class="token operator">=</span>dist/lib.import.mjs
+
+<span class="token comment"># Standalone</span>
+npx esbuild src/index.js <span class="token parameter variable">--bundle</span> <span class="token parameter variable">--outfile</span><span class="token operator">=</span>dist/lib.standalone.cjs</code></pre>
+<blockquote>
+<p><strong>NOTE:</strong> IIFE is the default format used by <code>esbuild</code>, and it's the format I've been using previously in all of my libraries — even though I didn't know I was using it!</p>
+</blockquote>
+<p>Once these bundles have been created, the library becomes much easier to use in various contexts. Here are some examples:</p>
+<p><strong>CommonJS in Node or other library:</strong></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> mylib <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./dist/lib.require.cjs"</span><span class="token punctuation">)</span></code></pre>
+<p><strong>ESM in Node:</strong></p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> mylib <span class="token keyword">from</span> <span class="token string">"./dist/lib.import.mjs"</span></code></pre>
+<p><strong>ESM in the browser:</strong></p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> mylib <span class="token keyword">from</span> <span class="token string">"./dist/lib.import.mjs"</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<p><strong>Standalone in Node:</strong></p>
+<pre class="language-js"><code class="language-js"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./dist/lib.standalone.cjs"</span><span class="token punctuation">)</span></code></pre>
+<p><strong>Standalone in the browser:</strong></p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./dist/lib.standalone.cjs<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<h3>Multiple entry points</h3>
+<p>It's apparently possible to provide multiple entry points to a library using the <code>&quot;exports&quot;</code> field in the library's <code>package.json</code> file, which can be useful for making the library accessible in both CJS and ESM contexts. Here's a standard setup recommended by the internet:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"module"</span><span class="token punctuation">,</span>
+  <span class="token property">"exports"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"require"</span><span class="token operator">:</span> <span class="token string">"./dist/lib.require.cjs"</span><span class="token punctuation">,</span>
+    <span class="token property">"import"</span><span class="token operator">:</span> <span class="token string">"./dist/lib.import.mjs"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>However, I've been unable to get this to work after <em>a lot</em> of trial and error. Specifically, when I try to <code>require</code> the library from elsewhere, I get errors. If anyone reading this has any ideas what might be going wrong, please let me know!</p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

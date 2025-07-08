@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">JS performance notes</h3>
+
+  <blockquote>
+<p><strong>NOTE:</strong> All of the notes below will use these timing functions:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> start <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">timeAsync</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> start <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">await</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start
+<span class="token punctuation">}</span></code></pre>
+</blockquote>
+<h2>Loops</h2>
+<p>When working with arrays, always prefer <code>for</code> loops to <code>forEach</code>, <code>map</code>, <code>filter</code>, etc. Plain ol' <code>for</code> loops can be orders of magnitude faster! For example:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">loopWithPlainOldForLoop</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> x<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">fn</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">loopWithArrayForEach</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  x<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">v</span> <span class="token operator">=></span> <span class="token function">fn</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100000000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  x<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">dubbleFn</span> <span class="token operator">=</span> <span class="token parameter">v</span> <span class="token operator">=></span> v <span class="token operator">*</span> <span class="token number">2</span>
+<span class="token keyword">let</span> meanPlainOldForLoopTime <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">let</span> meanArrayForEachTime <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> t <span class="token operator">=</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">loopWithPlainOldForLoop</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> dubbleFn<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  meanPlainOldForLoopTime <span class="token operator">+=</span> t <span class="token operator">/</span> <span class="token number">100</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> t <span class="token operator">=</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">loopWithArrayForEach</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> dubbleFn<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  meanArrayForEachTime <span class="token operator">+=</span> t <span class="token operator">/</span> <span class="token number">100</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"mean `for` loop time:"</span><span class="token punctuation">,</span> meanPlainOldForLoopTime<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"ms"</span><span class="token punctuation">)</span>
+<span class="token comment">// mean `for` loop time: 42.43 ms</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"mean `Array.forEach` loop time:"</span><span class="token punctuation">,</span> meanArrayForEachTime<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"ms"</span><span class="token punctuation">)</span>
+<span class="token comment">// mean `Array.forEach` loop time: 1245.44 ms</span></code></pre>
+<blockquote>
+<p><strong>ASIDE:</strong> This makes me wonder if I should try monkey-patching the <code>Array.prototype</code> methods. Hm... It's probably a horrible idea, but it's tempting nonetheless!</p>
+</blockquote>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

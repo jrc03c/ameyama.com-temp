@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Android flashing cheat sheet</h3>
+
+  <h2>Tools</h2>
+<p><strong>1. Download and extract the Android SDK platform tools.</strong></p>
+<p>To be able to use <code>adb</code>, <code>fastboot</code>, etc., you'll need to download the <a href="https://developer.android.com/tools/releases/platform-tools#downloads">Android SDK platform tools</a> and extract them.</p>
+<p><strong>2. Enable and configure the root user (outside of a container or VM).</strong></p>
+<p>I've tried running the tools as non-root users and/or from inside containers or VMs, and I've never gotten them to work properly. So, even though this is definitely not a best practice in most contexts, in this case I recommend enabling the root user and using it to run the platform tools.</p>
+<pre><code>sudo passwd root
+su
+PATH=&quot;path/to/platform-tools:$PATH&quot;
+</code></pre>
+<h2>Prep</h2>
+<p>To make sure your device can be flashed, you'll have to take a couple of preparatory steps in your Android device.</p>
+<p><strong>1. Enable developer settings.</strong></p>
+<p><strong>2. In the developer settings, enable USB debugging.</strong></p>
+<p><strong>3. In the developer settings, enable OEM unlocking.</strong></p>
+<p><strong>4. Connect the device to your computer.</strong></p>
+<p><strong>5. Unlock the bootloader using the platform tools on your computer.</strong></p>
+<p>This is a sort of weird step, and I'm not sure I understand the rationale for it. Nevertheless, here's the context: You'd think that after enabling OEM unlocking in step #3, the bootloader would be unlocked. Unfortunately, you'd be wrong. There's <em>another</em> lock that has to be unlocked, apparently. To unlock that second lock, you'll have to boot the device into its bootloader, and then run the relevant <code>fastboot</code> unlocking command:</p>
+<pre><code># (as root)
+
+# confirm that the device is connected and accessible:
+adb devices -l
+
+# reboot the device into its bootloader:
+adb reboot bootloader
+
+# unlock the bootloader:
+fastboot flashing unlock
+</code></pre>
+<p>Once that's done, you should be able to follow the other steps below to flash a new image onto your device!</p>
+<h2>Return to stock Android</h2>
+<p><strong>1. Download the stock image.</strong></p>
+<p>Download the target stock image zip file from <a href="https://developers.google.com/android/images">here</a>. (NOTE: You may have to agree to the terms of service at the bottom of the page before the giant list of images will load.) Specifically, click the &quot;Link&quot; link next to an image name, not the &quot;Flash&quot; link.</p>
+<p><strong>2. Unzip the zip file and move into the newly-created directory.</strong></p>
+<p>The zip file will probably have a name like <code>bluejay-bp1a.250405.007-factory-98ac49c0.zip</code>. For the sake of simplicity, though, I'll refer to it as <code>stock-image.zip</code>.</p>
+<pre><code>cd ~/Downloads
+unzip stock-image.zip -d stock-image
+cd stock-image
+</code></pre>
+<p><strong>3. Run the <code>flash-all.sh</code> script.</strong></p>
+<pre><code>chmod +x flash-all.sh
+./flash-all.sh
+</code></pre>
+<p><strong>3. Troubleshoot.</strong></p>
+<p>If you didn't complete all of the prep steps listed above, then something will almost certainly fail during the execution of the <code>flash-all.sh</code> script. However, I did encounter one particular error even after doing all of the prep steps! I forget the exact wording, but it was something like &quot;No space left on device&quot;. I thought at first that it was referring to storage space on the phone. But some digging revealed that it was neither referring to the phone nor to the computer's hard drive space generally; it was referring to the temporary directory on the computer in which work was being done! When I manually specified a different temp directory, the error went away, and the script was able to run all the way through. Here's how I manually specified the temp directory:</p>
+<pre><code>mkdir ./tmp
+TMPDIR=&quot;./tmp&quot; ./flash-all.sh
+</code></pre>
+<h2>Switch to (e.g.) Calyx</h2>
+<p>To switch to Calyx, just select your device <a href="https://calyxos.org/install/">here</a> and follow the instructions. I've never had any problems with Calyx's automated installer script, so I won't bother writing any further instructions here (other than to say that you'll still need to perform the prep steps listed above)!</p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

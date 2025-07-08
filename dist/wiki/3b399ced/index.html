@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Set up a VNC server on Linux</h3>
+
+  <pre><code># Install TightVNC.
+sudo apt update
+sudo apt install -y tightvnc
+
+# Start a new VNC server session.
+vncserver :1
+</code></pre>
+<p>The first time this is run, TightVNC will probably ask you to set up a password.</p>
+<p>Note that the display number in the last command (e.g., <code>:1</code>) affects the port number through which a client should connect to the server. The default VNC port starts at 5900; so using display <code>:1</code> means that the client must connect to the server on port 5901; using a display of <code>:2</code> means connecting on port 5902; etc.</p>
+<p>Once this is up and running, use a client like <a href="https://remmina.org/">Remmina</a> to connect to the server.</p>
+<p><strong>NOTE:</strong> VNC connections are not required to use encryption. At least, that's how things have been historically; whether that has changed in modern times, I don't know. But to ensure that the connection is encrypted, I recommend tunnelling the connection over SSH. Remmina makes this easy. When setting up a standard VNC connection in Remmina, follow these steps:</p>
+<ol>
+<li>
+<p>When setting up a standard VNC connection, you'd normally enter the IP address and port into the &quot;Server&quot; field in the &quot;Basic&quot; settings (e.g., &quot;123.456.789.000:5901&quot;). To use SSH tunnelling, however, set the server and port to &quot;localhost:5901&quot;.</p>
+</li>
+<li>
+<p>In the &quot;SSH Tunnel&quot; tab, click the &quot;Enable SSH tunnel&quot; button.</p>
+</li>
+<li>
+<p>Select &quot;Custom&quot; and set IP address and port using your predefined SSH settings. For example, to connect over port 22, give the field a value like &quot;123.456.789.000:22&quot;.</p>
+</li>
+<li>
+<p>I tend to use public key encryption for all of my SSH connections, if possible. If that's what you're using, then set the &quot;Authentication type&quot; to &quot;Public key (automatic)&quot;.</p>
+</li>
+<li>
+<p>Set the SSH username in the &quot;Username&quot; field.</p>
+</li>
+<li>
+<p>Check the box next to the &quot;SSH private key file&quot; field, and then browse the filesystem to select the relevant private key file.</p>
+</li>
+<li>
+<p>Click the &quot;Save&quot; button at the bottom.</p>
+</li>
+</ol>
+<p>And that's it!</p>
+<p><strong>NOTE:</strong> If for some reason nothing appears when you connect and the screen remains blank and gray, then you may need to follow <a href="/doc/a3ba69434fa263574edcfa499cc538bdd2b9ad5bb17add5eb8c88556111a7955">these</a> instructions.</p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

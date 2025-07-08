@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Spotify API notes</h3>
+
+  <p>Here's how to get started with the <a href="https://github.com/thelinmichael/spotify-web-api-node">spotify-web-api-node</a> library:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> Spotify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"spotify-web-api-node"</span><span class="token punctuation">)</span>
+
+<span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// Create an API instance.</span>
+  <span class="token keyword">const</span> api <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Spotify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">clientId</span><span class="token operator">:</span> <span class="token string">"&lt;client_id>"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">clientSecret</span><span class="token operator">:</span> <span class="token string">"&lt;client_secret>"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">redirectUri</span><span class="token operator">:</span> <span class="token string">"https://example.com"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token comment">// Even though you've provided a client ID and secret above, you'll still need</span>
+  <span class="token comment">// to get an access token for this session's requests.</span>
+  <span class="token keyword">const</span> accessTokenResponse <span class="token operator">=</span> <span class="token keyword">await</span> api<span class="token punctuation">.</span><span class="token function">clientCredentialsGrant</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> accessToken <span class="token operator">=</span> accessTokenResponse<span class="token punctuation">.</span>body<span class="token punctuation">[</span><span class="token string">"access_token"</span><span class="token punctuation">]</span>
+  spot<span class="token punctuation">.</span><span class="token function">setAccessToken</span><span class="token punctuation">(</span>accessToken<span class="token punctuation">)</span>
+
+  <span class="token comment">// Then use the API!</span>
+  <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> api<span class="token punctuation">.</span><span class="token function">getUserPlaylists</span><span class="token punctuation">(</span><span class="token string">"jrc03c"</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> playlists <span class="token operator">=</span> response<span class="token punctuation">.</span>body<span class="token punctuation">.</span>items
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>playlists<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p><strong>NOTE:</strong> The above is <em>not</em> intended for client-side use!</p>
+</blockquote>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

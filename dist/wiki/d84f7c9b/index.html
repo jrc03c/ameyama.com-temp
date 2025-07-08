@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Killing the most resource-intensive process</h3>
+
+  <p>A fun little one-liner from <a href="https://claude.ai/">Claude</a> to kill the most resource-intensive process owned by me:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">pkill</span> <span class="token parameter variable">-9</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">ps</span> <span class="token parameter variable">-U</span> <span class="token environment constant">$USER</span> <span class="token parameter variable">-o</span> pid,command <span class="token parameter variable">--sort</span><span class="token operator">=</span>-pmem <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'NR>1 {print $2; exit}'</span><span class="token variable">)</span></span>"</span></code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

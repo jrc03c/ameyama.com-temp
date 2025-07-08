@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Fixing VNC gray-screen problem</h3>
+
+  <p>While trying to use VNC with an Xubuntu host (i.e., the machine running the VNC server), I could connect successfully but could only see the color gray and nothing else. The following change to the host's <code>~/.vnc/xstartup</code> file fixed the problem.</p>
+<ol>
+<li>Back up the original <code>~/.vnc/xstartup</code> file.</li>
+<li>Change the contents of <code>~/.vnc/xstartup</code> to:</li>
+</ol>
+<pre><code>#!/bin/sh
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+startxfce4 &amp;
+</code></pre>
+<p>See more info about setting up a VNC server on Linux <a href="/doc/30b906befc888fdfd7a3040316097a21700a33810ab003b6dc6bd92209bdf35a">here</a>.</p>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

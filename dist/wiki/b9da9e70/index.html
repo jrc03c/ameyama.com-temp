@@ -1,0 +1,432 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Nim cheat sheet</h3>
+
+  <h1>Getting Started</h1>
+<p>Write to stdout:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token string">"Hello, world!"</span></code></pre>
+<p>Build:</p>
+<pre class="language-bash"><code class="language-bash">nim c main.nim</code></pre>
+<p>Compile and run:</p>
+<pre class="language-bash"><code class="language-bash">nim c <span class="token parameter variable">-r</span> main.nim</code></pre>
+<p><strong>HINT:</strong> Add the <code>--verbosity:0</code> flag to turn off extra info printed by the compiler.</p>
+<h1>Variables</h1>
+<p><code>const</code> variables are immutable and computed at compile time.</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token number">5</span></code></pre>
+<p><code>let</code> variables are immutable and computed at run time.</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">5</span></code></pre>
+<p><code>var</code> variables are mutable.</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">5</span></code></pre>
+<p>Types can be inferred or written explicitly. Both of these lines are valid:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">5</span>
+<span class="token keyword">var</span> x<span class="token operator">:</span> int <span class="token operator">=</span> <span class="token number">5</span></code></pre>
+<h1>Types</h1>
+<h2>Primitives</h2>
+<p>Here are the most salient primitive types:</p>
+<ul>
+<li><code>float</code></li>
+<li><code>int</code></li>
+<li><code>bool</code></li>
+<li><code>string</code></li>
+<li><code>char</code></li>
+<li><code>nil</code></li>
+</ul>
+<p>Enums:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">type</span>
+  Directions <span class="token operator">=</span> <span class="token keyword">enum</span>
+    North<span class="token punctuation">,</span> South<span class="token punctuation">,</span> East<span class="token punctuation">,</span> West
+
+echo Directions<span class="token operator">.</span>North <span class="token operator">==</span> Directions<span class="token operator">.</span>South
+<span class="token comment"># false</span></code></pre>
+<h2>Arrays &amp; Sequences</h2>
+<p>Arrays have a fixed length:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> x<span class="token operator">:</span> array<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> int<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">]</span></code></pre>
+<p>Sequences do not have a fixed length:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> x<span class="token operator">:</span> seq<span class="token punctuation">[</span>int<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+x<span class="token operator">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+x<span class="token operator">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>
+x<span class="token operator">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">)</span>
+x<span class="token operator">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span>
+x<span class="token operator">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span></code></pre>
+<p>Mapping and filtering of sequences (and maybe arrays?) can be enabled by importing the <code>sequtils</code> module from the standard library:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">import</span> std<span class="token operator">/</span>sequtils
+
+<span class="token keyword">var</span> x<span class="token operator">:</span> seq<span class="token punctuation">[</span>int<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token keyword">var</span> y<span class="token operator">:</span> seq<span class="token punctuation">[</span>int<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token operator">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token function">proc</span> <span class="token punctuation">(</span>v<span class="token operator">:</span> int<span class="token punctuation">)</span><span class="token operator">:</span> int <span class="token operator">=</span> v <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span>
+echo y
+
+<span class="token keyword">var</span> z<span class="token operator">:</span> seq<span class="token punctuation">[</span>int<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token operator">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token function">proc</span> <span class="token punctuation">(</span>v<span class="token operator">:</span> int<span class="token punctuation">)</span><span class="token operator">:</span> bool <span class="token operator">=</span> v <span class="token operator">mod</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+echo z</code></pre>
+<p>There's apparently also a lambda function syntax that uses the <code>do</code> keyword:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> y<span class="token operator">:</span> seq<span class="token punctuation">[</span>int<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token operator">.</span>map <span class="token function">do</span> <span class="token punctuation">(</span>v<span class="token operator">:</span> int<span class="token punctuation">)</span> <span class="token operator">-></span> int<span class="token operator">:</span> v <span class="token operator">*</span> <span class="token number">2</span></code></pre>
+<p>Personally, though, I think my favorite is the JS-like fat-arrow notation, though it requires importing the standard library's <code>sugar</code> module:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">import</span> std<span class="token operator">/</span>sugar
+<span class="token keyword">var</span> y<span class="token operator">:</span> seq<span class="token punctuation">[</span>int<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token operator">.</span><span class="token function">map</span><span class="token punctuation">(</span>v <span class="token operator">=></span> v <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span></code></pre>
+<p>I'm not quite sure yet how to indicate parameter and return types in this notation, though. Hopefully, it won't be very hard to figure out!</p>
+<h2>Objects (Structs)</h2>
+<p>Objects in Nim are like structs in other C-languages: they can't have methods; they can only have properties. However, methods, inheritance, and other OOP features are available. See <a href="#object-oriented-programming">the OOP section</a> below for more info.</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">type</span>
+  Person <span class="token operator">=</span> <span class="token keyword">object</span>
+    name<span class="token operator">:</span> string
+    age<span class="token operator">:</span> int
+
+<span class="token keyword">var</span> alice <span class="token operator">=</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">23</span><span class="token punctuation">)</span></code></pre>
+<p>Check if a value is of a certain type using the <code>is</code> keyword:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token number">234</span> <span class="token operator">is</span> int
+echo <span class="token string">"foo"</span> <span class="token operator">is</span> string
+echo alice <span class="token operator">is</span> Person</code></pre>
+<h1>Control Flow</h1>
+<p>Conditionals:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0.25</span>
+
+<span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token operator">:</span>
+  echo <span class="token string">"Less than 0!"</span>
+
+<span class="token keyword">elif</span> x <span class="token operator">></span> <span class="token number">1</span><span class="token operator">:</span>
+  echo <span class="token string">"Greater than 1!"</span>
+
+<span class="token keyword">else</span><span class="token operator">:</span>
+  echo <span class="token string">"Between 0 and 1!"</span></code></pre>
+<p><code>while</code> loops:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token operator">:</span>
+  i <span class="token operator">+=</span> <span class="token number">1</span>
+  echo i</code></pre>
+<p><code>for</code> loops:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> fibs<span class="token operator">:</span> seq<span class="token punctuation">[</span>int<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> v <span class="token operator">in</span> fibs<span class="token operator">:</span>
+  echo v
+
+<span class="token keyword">for</span> i<span class="token punctuation">,</span> v <span class="token operator">in</span> fibs<span class="token operator">:</span>
+  echo v <span class="token operator">&amp;</span> <span class="token string">" is the value at index "</span> <span class="token operator">&amp;</span> i
+
+<span class="token keyword">for</span> i <span class="token operator">in</span> <span class="token number">0</span><span class="token operator">..</span><span class="token number">100</span><span class="token operator">:</span>
+  echo i</code></pre>
+<p><strong>NOTE:</strong> The <code>..</code> operator is inclusive on both ends! So, for example, <code>0..100</code> represents the range [0, 100] (inclusive).</p>
+<p>Exception handling:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">somethingStupid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span>
+  <span class="token keyword">raise</span> <span class="token function">newException</span><span class="token punctuation">(</span>Exception<span class="token punctuation">,</span> <span class="token string">"Nope!"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> failed <span class="token operator">=</span> false
+
+<span class="token keyword">try</span><span class="token operator">:</span>
+  <span class="token function">somethingStupid</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token operator">:</span>
+  echo <span class="token string">"ERROR: "</span> <span class="token operator">&amp;</span> e<span class="token operator">.</span>msg
+  failed <span class="token operator">=</span> true
+
+echo failed</code></pre>
+<h1>Procedures (Functions)</h1>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">fib</span><span class="token punctuation">(</span>n<span class="token operator">:</span> int<span class="token punctuation">)</span><span class="token operator">:</span> int <span class="token operator">=</span>
+  <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token operator">:</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+
+  <span class="token keyword">return</span> <span class="token function">fib</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">fib</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> i <span class="token operator">in</span> <span class="token number">0</span><span class="token operator">..</span><span class="token number">10</span><span class="token operator">:</span>
+  echo <span class="token function">fib</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span></code></pre>
+<p>Procedures can be overloaded:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token operator">:</span> float<span class="token punctuation">,</span> b<span class="token operator">:</span> float<span class="token punctuation">)</span><span class="token operator">:</span> float <span class="token operator">=</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b
+
+<span class="token keyword">proc</span> <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token operator">:</span> int<span class="token punctuation">,</span> b<span class="token operator">:</span> int<span class="token punctuation">)</span><span class="token operator">:</span> int <span class="token operator">=</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b
+
+<span class="token keyword">proc</span> <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token operator">:</span> string<span class="token punctuation">,</span> b<span class="token operator">:</span> string<span class="token punctuation">)</span><span class="token operator">:</span> string <span class="token operator">=</span>
+  <span class="token keyword">return</span> a <span class="token operator">&amp;</span> b
+
+echo <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">,</span> <span class="token number">3.4</span><span class="token punctuation">)</span>
+echo <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">234</span><span class="token punctuation">,</span> <span class="token number">567</span><span class="token punctuation">)</span>
+echo <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token string">"bar"</span><span class="token punctuation">)</span></code></pre>
+<p>Procedures can also be generic:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">reverse[T]</span><span class="token punctuation">(</span>x<span class="token operator">:</span> seq<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> seq<span class="token punctuation">[</span>T<span class="token punctuation">]</span> <span class="token operator">=</span>
+  <span class="token keyword">var</span> temp<span class="token operator">:</span> seq<span class="token punctuation">[</span>T<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+  <span class="token keyword">for</span> i <span class="token operator">in</span> <span class="token number">0</span><span class="token operator">..</span><span class="token function">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">:</span>
+    temp<span class="token operator">.</span><span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token function">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> temp
+
+echo <span class="token function">reverse</span><span class="token punctuation">(</span><span class="token operator">@</span><span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+echo <span class="token function">reverse</span><span class="token punctuation">(</span><span class="token operator">@</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>Procedures can be used to create and/or overload operators:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">`@`</span><span class="token punctuation">(</span>a<span class="token operator">:</span> float<span class="token punctuation">,</span> b<span class="token operator">:</span> float<span class="token punctuation">)</span><span class="token operator">:</span> float <span class="token operator">=</span>
+  <span class="token keyword">return</span> a <span class="token operator">*</span> b
+
+echo <span class="token number">234</span> <span class="token operator">*</span> <span class="token number">567</span>
+echo <span class="token number">234</span> <span class="token operator">@</span> <span class="token number">567</span>
+
+<span class="token keyword">proc</span> <span class="token function">`+`</span><span class="token punctuation">(</span>a<span class="token operator">:</span> string<span class="token punctuation">,</span> b<span class="token operator">:</span> string<span class="token punctuation">)</span><span class="token operator">:</span> string <span class="token operator">=</span>
+  <span class="token keyword">return</span> a <span class="token operator">&amp;</span> b
+
+echo <span class="token string">"foo"</span> <span class="token operator">+</span> <span class="token string">"bar"</span></code></pre>
+<p><strong>NOTE:</strong> Operator &quot;names&quot; must be wrapped in backticks and (as far as I can tell) can only contain symbols.</p>
+<p>The keyword <code>varargs</code> can be used as a placeholder for to mean &quot;all of the arguments passed into the procedure&quot;:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">printAllTheThings</span><span class="token punctuation">(</span>things<span class="token operator">:</span> varargs<span class="token punctuation">[</span>string<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=</span>
+  <span class="token keyword">for</span> thing <span class="token operator">in</span> things<span class="token operator">:</span>
+    echo thing
+
+<span class="token function">printAllTheThings</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">)</span>
+<span class="token function">printAllTheThings</span><span class="token punctuation">(</span><span class="token operator">$</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">$</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">$</span><span class="token number">3</span><span class="token punctuation">)</span></code></pre>
+<h1>Working with Strings</h1>
+<p>Multiline strings:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token string">"""
+  Hello, world!
+  This is a multiline string.
+"""</span></code></pre>
+<p>Concatenate strings with the <code>&amp;</code> operator:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token string">"foo"</span> <span class="token operator">&amp;</span> <span class="token string">"bar"</span></code></pre>
+<p>Convert values to strings using the <code>$</code> operator:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token number">234</span> <span class="token operator">&amp;</span> <span class="token string">" is a "</span> <span class="token operator">&amp;</span> typeof <span class="token number">234</span>
+echo <span class="token operator">$</span><span class="token number">234</span> <span class="token operator">&amp;</span> <span class="token string">" is a "</span> <span class="token operator">&amp;</span> typeof <span class="token operator">$</span><span class="token number">234</span></code></pre>
+<p>For most interesting string-related tasks, we'll need to import the standard library's <code>strutils</code> module:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">import</span> std<span class="token operator">/</span>strutils</code></pre>
+<p>(The remainder of this section will assume that the <code>strutils</code> module has been imported.)</p>
+<p>Check for the existence of a substring within a string:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token string">"foo"</span> <span class="token operator">in</span> <span class="token string">"foolish"</span>
+echo <span class="token string">"foo"</span> <span class="token operator">in</span> <span class="token string">"nope"</span>
+echo <span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"foolish"</span><span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">)</span>
+echo <span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"nope"</span><span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">)</span></code></pre>
+<p>Use some preexisting character sets:</p>
+<pre class="language-nim"><code class="language-nim">echo Digits
+echo HexDigits</code></pre>
+<p>Interpolate / format strings:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token string">"My name is $1, and I'm $2 years old!"</span> <span class="token operator">%</span> <span class="token punctuation">[</span><span class="token string">"Josh"</span><span class="token punctuation">,</span> <span class="token string">"37"</span><span class="token punctuation">]</span>
+echo <span class="token string">"My name is $#, and I'm $# years old!"</span> <span class="token operator">%</span> <span class="token punctuation">[</span><span class="token string">"Josh"</span><span class="token punctuation">,</span> <span class="token string">"37"</span><span class="token punctuation">]</span></code></pre>
+<p>Count occurrences of a substring:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token function">count</span><span class="token punctuation">(</span><span class="token string">"fooooooood"</span><span class="token punctuation">,</span> <span class="token string">"o"</span><span class="token punctuation">)</span>
+echo <span class="token function">count</span><span class="token punctuation">(</span><span class="token string">"foofoofoofoofoo"</span><span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">)</span></code></pre>
+<p>Indent / dedent / unindent text:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> html <span class="token operator">=</span> <span class="token string">"""
+  &lt;html>
+    &lt;head>
+      ...
+    &lt;/head>
+    &lt;body>
+      ...
+    &lt;/body>
+  &lt;/html>
+"""</span>
+
+echo <span class="token string">"====="</span>
+echo <span class="token function">indent</span><span class="token punctuation">(</span>html<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
+
+<span class="token comment"># =====</span>
+<span class="token comment">#           &lt;html></span>
+<span class="token comment">#             &lt;head></span>
+<span class="token comment">#               ...</span>
+<span class="token comment">#             &lt;/head></span>
+<span class="token comment">#             &lt;body></span>
+<span class="token comment">#               ...</span>
+<span class="token comment">#             &lt;/body></span>
+<span class="token comment">#           &lt;/html></span>
+
+echo <span class="token string">"====="</span>
+echo <span class="token function">dedent</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span>
+
+<span class="token comment"># =====</span>
+<span class="token comment"># &lt;html></span>
+<span class="token comment">#   &lt;head></span>
+<span class="token comment">#     ...</span>
+<span class="token comment">#   &lt;/head></span>
+<span class="token comment">#   &lt;body></span>
+<span class="token comment">#     ...</span>
+<span class="token comment">#   &lt;/body></span>
+<span class="token comment"># &lt;/html></span>
+
+echo <span class="token string">"====="</span>
+echo <span class="token function">unindent</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span>
+
+<span class="token comment"># =====</span>
+<span class="token comment"># &lt;html></span>
+<span class="token comment"># &lt;head></span>
+<span class="token comment"># ...</span>
+<span class="token comment"># &lt;/head></span>
+<span class="token comment"># &lt;body></span>
+<span class="token comment"># ...</span>
+<span class="token comment"># &lt;/body></span>
+<span class="token comment"># &lt;/html></span></code></pre>
+<p>Check for substrings at the beginning or end of a string:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token string">"Hello, world!"</span><span class="token operator">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"He"</span><span class="token punctuation">)</span>
+echo <span class="token string">"Hello, world!"</span><span class="token operator">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"d!"</span><span class="token punctuation">)</span>
+echo <span class="token string">"Hello, world!"</span><span class="token operator">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"He"</span><span class="token punctuation">)</span>
+echo <span class="token string">"Hello, world!"</span><span class="token operator">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"d!"</span><span class="token punctuation">)</span></code></pre>
+<p>Convert to and from other encodings:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token function">fromBin[int]</span><span class="token punctuation">(</span><span class="token string">"1010"</span><span class="token punctuation">)</span>
+echo <span class="token number">10.</span><span class="token function">toBin</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+echo <span class="token function">fromHex[int]</span><span class="token punctuation">(</span><span class="token string">"ababab"</span><span class="token punctuation">)</span>
+echo <span class="token number">11250603.</span><span class="token function">toHex</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span></code></pre>
+<p>Join strings:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"B"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">" => "</span><span class="token punctuation">)</span></code></pre>
+<p>Replace substrings:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> food <span class="token operator">=</span> <span class="token string">"food"</span>
+
+<span class="token keyword">while</span> <span class="token string">"o"</span> <span class="token operator">in</span> food<span class="token operator">:</span>
+  food <span class="token operator">=</span> food<span class="token operator">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"o"</span><span class="token punctuation">,</span> <span class="token string">"-"</span><span class="token punctuation">)</span>
+
+echo food</code></pre>
+<p><strong>NOTE:</strong> There's a <a href="https://nim-lang.org/docs/strutils.html#multiReplace%2Cstring%2Cvarargs%5B%5D"><code>multiReplace</code></a> function in <code>std/strutils</code>, but I couldn't figure out the syntax. The compiler didn't seem to like any of the ways I wrote it. 🤷</p>
+<p>Parse numbers:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> flote <span class="token operator">=</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span><span class="token string">"234.567"</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> ent <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">"13579"</span><span class="token punctuation">)</span>
+echo flote<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> typeof flote
+echo ent<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">,</span> typeof ent</code></pre>
+<p>Repeat strings:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token string">"foo"</span><span class="token operator">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span></code></pre>
+<p>Remove leading or trailing whitespace:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token string">"               hey               "</span><span class="token operator">.</span><span class="token function">strip</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Change case:</p>
+<pre class="language-nim"><code class="language-nim">echo <span class="token string">"Foo"</span><span class="token operator">.</span><span class="token function">toLower</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+echo <span class="token string">"Foo"</span><span class="token operator">.</span><span class="token function">toUpper</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h1>Object-Oriented Programming</h1>
+<p>Create a type:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">type</span> Person <span class="token operator">=</span> <span class="token keyword">object</span>
+  name<span class="token operator">:</span> string
+  age<span class="token operator">:</span> int</code></pre>
+<p>Create an instance:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> alice <span class="token operator">=</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">23</span><span class="token punctuation">)</span></code></pre>
+<p>Create methods for the type:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">sayHi</span><span class="token punctuation">(</span>self<span class="token operator">:</span> Person<span class="token punctuation">)</span> <span class="token operator">=</span>
+  echo <span class="token string">"Hi! My name is $#!"</span> <span class="token operator">%</span> <span class="token punctuation">[</span>self<span class="token operator">.</span>name<span class="token punctuation">]</span></code></pre>
+<p><strong>NOTE:</strong> Using <code>self</code> as the variable name for a type instance isn't required; it's just the convention.</p>
+<p>Call the methods using a variety of syntaxes:</p>
+<pre class="language-nim"><code class="language-nim">alice<span class="token operator">.</span><span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+alice<span class="token operator">.</span>sayHi
+<span class="token function">sayHi</span><span class="token punctuation">(</span>alice<span class="token punctuation">)</span></code></pre>
+<p>Note that this pattern works for non-object types as well:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">dubble</span><span class="token punctuation">(</span>x<span class="token operator">:</span> float<span class="token punctuation">)</span><span class="token operator">:</span> float <span class="token operator">=</span>
+  <span class="token keyword">return</span> x <span class="token operator">*</span> <span class="token number">2</span>
+
+echo <span class="token function">dubble</span><span class="token punctuation">(</span><span class="token number">234.567</span><span class="token punctuation">)</span>
+echo <span class="token number">234.567</span><span class="token operator">.</span><span class="token function">dubble</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+echo <span class="token number">234.567</span><span class="token operator">.</span>dubble</code></pre>
+<p>Importantly, values passed into procedures are immutable. This would fail:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">changeNameToBob</span><span class="token punctuation">(</span>self<span class="token operator">:</span> Person<span class="token punctuation">)</span> <span class="token operator">=</span>
+  self<span class="token operator">.</span>name <span class="token operator">=</span> <span class="token string">"Bob"</span>
+
+<span class="token function">changeNameToBob</span><span class="token punctuation">(</span>alice<span class="token punctuation">)</span>
+echo alice<span class="token operator">.</span>name</code></pre>
+<p>However, arguments can be marked as mutable using the <code>var</code> keyword in the function signature:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">proc</span> <span class="token function">changeNameToBob</span><span class="token punctuation">(</span>self<span class="token operator">:</span> <span class="token keyword">var</span> Person<span class="token punctuation">)</span> <span class="token operator">=</span>
+  self<span class="token operator">.</span>name <span class="token operator">=</span> <span class="token string">"Bob"</span>
+
+<span class="token function">changeNameToBob</span><span class="token punctuation">(</span>alice<span class="token punctuation">)</span>
+echo alice<span class="token operator">.</span>name</code></pre>
+<p>To create inheritance, the base type must inherit from <code>RootObj</code>:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">type</span> Person <span class="token operator">=</span> <span class="token keyword">ref</span> <span class="token keyword">object</span> <span class="token operator">of</span> RootObj
+  name<span class="token operator">:</span> string
+  age<span class="token operator">:</span> int</code></pre>
+<p>Then it can be sub-typed:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">type</span> Employee <span class="token operator">=</span> <span class="token keyword">ref</span> <span class="token keyword">object</span> <span class="token operator">of</span> Person
+  position<span class="token operator">:</span> string</code></pre>
+<p>Use the <code>is</code> keyword to check if a value is of a particular type:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> dwight <span class="token operator">=</span> <span class="token function">Employee</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token string">"Dwight"</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">40</span><span class="token punctuation">,</span> position<span class="token operator">:</span> <span class="token string">"Assistant [to the] Manager"</span><span class="token punctuation">)</span>
+
+echo dwight <span class="token operator">is</span> Person
+echo dwight <span class="token operator">is</span> Employee</code></pre>
+<h1>Imports &amp; Modules</h1>
+<p>To mark a variable for export from a file, use an asterisk:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token comment"># helpers.nim</span>
+<span class="token keyword">proc</span> <span class="token function">add<span class="token operator">*</span></span><span class="token punctuation">(</span>a<span class="token operator">:</span> int<span class="token punctuation">,</span> b<span class="token operator">:</span> int<span class="token punctuation">)</span><span class="token operator">:</span> int <span class="token operator">=</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b</code></pre>
+<p>Import particular items from a file:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">from</span> helpers <span class="token keyword">import</span> add</code></pre>
+<p>And rename the imported item, if you like:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">from</span> helpers <span class="token keyword">import</span> add <span class="token keyword">as</span> addInts</code></pre>
+<p>Or import the entire file:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">import</span> helpers</code></pre>
+<p>It's also possible to include the contents of a file using the <code>include</code> keyword:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">include</span> helpers</code></pre>
+<p>A <em>package</em> (as opposed to a file or module) is a directory with a <code>identifier.nimble</code> file at its root. If the name of the package is &quot;coolstuff&quot;, then the directory should contain a <code>coolstuff.nimble</code> file. (As far as I can tell, this file doesn't actually need to contain anything; it just needs to exist.)</p>
+<h1>Working with Files</h1>
+<p>Read an entire file:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> raw <span class="token operator">=</span> <span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">"myfile.txt"</span><span class="token punctuation">)</span></code></pre>
+<p>Read a file one line at a time:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> f <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"myfile.txt"</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> lines<span class="token operator">:</span> seq<span class="token punctuation">[</span>string<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">var</span> isStillReading <span class="token operator">=</span> true
+
+<span class="token keyword">while</span> isStillReading<span class="token operator">:</span>
+  <span class="token keyword">try</span><span class="token operator">:</span>
+    lines<span class="token operator">.</span><span class="token function">add</span><span class="token punctuation">(</span>f<span class="token operator">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">except</span><span class="token operator">:</span>
+    isStillReading <span class="token operator">=</span> false
+
+echo lines
+f<span class="token operator">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><strong>NOTE:</strong> Don't forget to <code>close</code> the file when you're done with it (as in the last line of the example above)!</p>
+<p>Write an entire file all at once:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">"myfile.txt"</span><span class="token punctuation">,</span> <span class="token string">"Here is the new content of the file!"</span><span class="token punctuation">)</span></code></pre>
+<p>Write to a file one line at a time:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> f <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"integers.txt"</span><span class="token punctuation">,</span> fmWrite<span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> i <span class="token operator">in</span> <span class="token number">0</span><span class="token operator">..</span><span class="token number">100</span><span class="token operator">:</span>
+  f<span class="token operator">.</span><span class="token function">writeLine</span><span class="token punctuation">(</span><span class="token operator">$</span>i<span class="token punctuation">)</span>
+
+f<span class="token operator">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><strong>NOTE:</strong> Note the use of the <code>fmWrite</code> constant to enable writing!</p>
+<h2>JSON</h2>
+<p>Here's the contents of a file called <code>numbers.json</code>:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">[</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">456</span><span class="token punctuation">,</span> <span class="token number">789</span><span class="token punctuation">]</span></code></pre>
+<p>To import the data contained in the file, we need to import the <code>json</code> module from the standard library and then use the <code>parseJson</code> procedure:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">import</span> std<span class="token operator">/</span>json
+
+<span class="token keyword">var</span> raw <span class="token operator">=</span> <span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">"numbers.json"</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> values<span class="token operator">:</span> seq<span class="token punctuation">[</span>int<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> v <span class="token operator">in</span> raw<span class="token operator">:</span>
+  values<span class="token operator">.</span><span class="token function">add</span><span class="token punctuation">(</span>v<span class="token operator">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+echo values</code></pre>
+<p>Note that values aren't automatically converted into their usual types; instead, it's necessary to call each node's <code>getInt</code>, <code>getFloat</code>, <code>getString</code>, or <code>getBool</code> methods in order to extract a value.</p>
+<p>Converting data to JSON involves using the <code>%*</code> operator and then converting the result into a string using the <code>$</code> operator:</p>
+<pre class="language-nim"><code class="language-nim"><span class="token keyword">var</span> values<span class="token operator">:</span> seq<span class="token punctuation">[</span>int<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">@</span><span class="token punctuation">[</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">456</span><span class="token punctuation">,</span> <span class="token number">789</span><span class="token punctuation">]</span>
+<span class="token keyword">var</span> raw <span class="token operator">=</span> <span class="token operator">$</span><span class="token punctuation">(</span><span class="token operator">%*</span> values<span class="token punctuation">)</span>
+<span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">"values.json"</span><span class="token punctuation">,</span> raw<span class="token punctuation">)</span></code></pre>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>

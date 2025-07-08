@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="/res/css/prismjs-okaidia.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/global.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <h1 id="title">
+  <a href="/">雨山</a>
+</h1>
+
+<nav>
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+
+    <li>
+      <a href="/about/">About</a>
+    </li>
+
+    <li>
+      <a href="/search/">Search</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <hr />
+    <section>
+<div class="page">
+  <h3 class="title">Handle `BigInt` errors when bundling `js-math-tools` in Vite</h3>
+
+  <p>Transpilation fails when bundling <code>js-math-tools</code> with Vite because the library uses <code>BigInt</code> in some of its calculations. To fix this, add these settings to the <code>vite.config.js</code> file:</p>
+<pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">build</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token string">"es2020"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token literal-property property">optimizeDeps</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">esbuildOptions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token string">"es2020"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Since this solution was actually found in the SvelteKit GitHub repo's issues list, it may be the case that this solution will work for other bundlers, perhaps with minimal tweaks.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://github.com/sveltejs/kit/issues/859#issuecomment-1184696144">https://github.com/sveltejs/kit/issues/859#issuecomment-1184696144</a>:</li>
+</ul>
+
+</div>
+</section>
+    <hr />
+
+    <div class="bg-yellow notification">
+      <b>NOTE:</b> A bunch of links around the site are dead. I'm working on
+      fixing them!
+    </div>
+  </body>
+</html>
