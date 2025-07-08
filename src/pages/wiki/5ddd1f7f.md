@@ -1,6 +1,12 @@
 ---
 title: matplotlib cheat sheet
-tags: 'python, programming, data-science, math, statistics'
+tags:
+  - data-science
+  - math
+  - programming
+  - python
+  - statistics
+  - wiki
 permalink: /wiki/5ddd1f7f/
 layout: page
 ---

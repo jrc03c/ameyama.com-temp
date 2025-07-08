@@ -1,6 +1,9 @@
 ---
 title: Improve `scrcpy` performance
-tags: 'linux, android'
+tags:
+  - android
+  - linux
+  - wiki
 permalink: /wiki/de6dbcc6/
 layout: page
 ---

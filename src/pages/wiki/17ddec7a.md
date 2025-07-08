@@ -1,6 +1,11 @@
 ---
 title: Running
-tags: 'exercise, health, body, self-care'
+tags:
+  - body
+  - exercise
+  - health
+  - self-care
+  - wiki
 permalink: /wiki/17ddec7a/
 layout: page
 ---

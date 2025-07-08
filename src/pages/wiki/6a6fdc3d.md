@@ -2,7 +2,11 @@
 title: >-
   Perform principle component analysis (PCA) using singular value decomposition
   (SVD)
-tags: 'math, data-science, programming'
+tags:
+  - data-science
+  - math
+  - programming
+  - wiki
 permalink: /wiki/6a6fdc3d/
 layout: page
 ---

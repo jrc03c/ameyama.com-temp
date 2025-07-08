@@ -1,6 +1,9 @@
 ---
 title: Specifying a key for working with GitHub repos
-tags: 'programming, linux'
+tags:
+  - linux
+  - programming
+  - wiki
 permalink: /wiki/c19c4edc/
 layout: page
 ---

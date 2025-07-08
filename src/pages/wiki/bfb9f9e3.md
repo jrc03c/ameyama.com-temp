@@ -1,6 +1,9 @@
 ---
 title: Copying permissions one from file to another
-tags: 'linux, programming'
+tags:
+  - linux
+  - programming
+  - wiki
 permalink: /wiki/bfb9f9e3/
 layout: page
 ---

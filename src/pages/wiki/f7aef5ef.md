@@ -1,6 +1,11 @@
 ---
 title: Normalizing audio with Python
-tags: 'programming, python, audio, music'
+tags:
+  - audio
+  - music
+  - programming
+  - python
+  - wiki
 permalink: /wiki/f7aef5ef/
 layout: page
 ---

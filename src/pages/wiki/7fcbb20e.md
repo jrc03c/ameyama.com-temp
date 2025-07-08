@@ -1,6 +1,10 @@
 ---
 title: Split a file into many parts and then rejoin them
-tags: 'linux, security, privacy'
+tags:
+  - linux
+  - privacy
+  - security
+  - wiki
 permalink: /wiki/7fcbb20e/
 layout: page
 ---

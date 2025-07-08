@@ -1,6 +1,12 @@
 ---
 title: Design resources
-tags: 'design, visual-design, aesthetics, web, programming'
+tags:
+  - aesthetics
+  - design
+  - programming
+  - visual-design
+  - web
+  - wiki
 permalink: /wiki/a7ddb2b3/
 layout: page
 ---

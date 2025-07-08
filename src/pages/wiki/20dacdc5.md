@@ -1,6 +1,10 @@
 ---
 title: Looping a video to fit over an audio file
-tags: 'video, audio, linux'
+tags:
+  - audio
+  - linux
+  - video
+  - wiki
 permalink: /wiki/20dacdc5/
 layout: page
 ---
