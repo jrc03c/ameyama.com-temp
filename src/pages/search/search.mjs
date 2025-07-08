@@ -3,23 +3,7 @@ import { WebWorkerHelper } from "@jrc03c/web-worker-helper"
 window.addEventListener("load", async () => {
   const worker = new WebWorkerHelper("search-worker-bundle.js")
   const container = document.querySelector("#search")
-  const form = container.querySelector("#search-form")
-  const queryInput = form.querySelector("input[type='text']")
-  const submitButton = form.querySelector("input[type='submit']")
   const resultsContainer = container.querySelector("#search-results")
-
-  form.addEventListener("submit", async event => {
-    event.preventDefault()
-    event.stopImmediatePropagation()
-
-    const url = new URL(window.location.href)
-    url.searchParams.set("query", encodeURIComponent(queryInput.value))
-    window.location.href = url.toString()
-  })
-
-  queryInput.disabled = true
-  submitButton.disabled = true
-  submitButton.value = "Loading..."
 
   const index = await (async () => {
     const cachedIndex = localStorage.getItem("search-index")
@@ -41,16 +25,17 @@ window.addEventListener("load", async () => {
 
   await worker.exec("set-index", index)
 
-  queryInput.disabled = false
-  submitButton.disabled = false
-  submitButton.value = "Search"
-
   const url = new URL(window.location.href)
   let query = url.searchParams.get("query")
 
   if (query) {
     query = decodeURIComponent(query)
-    queryInput.value = query
+
+    if (query) {
+      const form = document.querySelector("#search-form")
+      const input = form.querySelector("input[type='text']")
+      input.value = query
+    }
 
     const results = await worker.exec("search", query)
     resultsContainer.innerHTML = ""
