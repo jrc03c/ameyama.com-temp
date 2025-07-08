@@ -1,4 +1,5 @@
 build-logs.json
+dead-links.txt
 dist
 node_modules
 temp*js

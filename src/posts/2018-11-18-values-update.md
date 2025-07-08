@@ -2,6 +2,8 @@
 layout: post
 title: Values Update
 tags: post
+id: f683595a
+permalink: /blog/f683595a/
 ---
 
 > UPDATE: After reading and re-reading this post, I want to remind you that the epistemic statuses of these claims are "very uncertain." I'm always learning, always updating; and although I may seem quite certain about these things, I'm actually not certain at all. The things I say about capitalism, for example, are a reaction to the horrible inequality in the world. If it can be shown that that's caused by something else, then I might be willing to give capitalism a chance; but in the meantime, I have to call it as I see it.

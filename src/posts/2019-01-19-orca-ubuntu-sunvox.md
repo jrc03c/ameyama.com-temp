@@ -2,6 +2,8 @@
 title: Setting Up Orca on Ubuntu 18.04.1 LTS with SunVox
 layout: post
 tags: post
+id: '79e62722'
+permalink: /blog/79e62722/
 ---
 
 It's fairly straightforward to set up [ORCΛ](https://github.com/hundredrabbits/orca) on Ubuntu for use with [SunVox](http://www.warmplace.ru/soft/sunvox/), and though I haven't really gotten a chance to do anything advanced with it yet, these instructions at least got me off the ground.
@@ -9,7 +11,7 @@ It's fairly straightforward to set up [ORCΛ](https://github.com/hundredrabbits/
 Here's a video of the process. The written instructions are below.
 
 <video width="100%" controls>
-	<source src="/media/orca-sunvox-linux.mp4">
+	<source src="/res/media/orca-sunvox-linux.mp4">
 </video>
 
 So, first, launch SunVox. Open the Preferences from the little menu at the top left. Select the MIDI submenu. Click on "MIDI controller 1" and choose "Midi Through Port-0" from the drop-down list. Then close the preferences.

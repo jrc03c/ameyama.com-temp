@@ -2,6 +2,8 @@
 title: Chocolate Rage and Self-Efficacy
 layout: post
 tags: post
+id: 24104d3a
+permalink: /blog/24104d3a/
 ---
 
 I've half-jokingly said before that I experience "chocolate rage." That is, when I eat too much chocolate, I become extremely irritable and even aggressive. I also feel an unusually high amount of fear and an overwhelming desire to be alone and to hide in a corner. I mean that literally, by the way. Like, if I could climb into a very tiny closet in the most remote part of the house and shut the door and turn off the lights while I'm in a chocolate rage, I'd gladly do so. I told my students about this problem once, and they laughed at me. They apparently had a hard time believing that mild-mannered Mr. Castle could ever get angry about anything. So, _my_ "aggressive" may not look like someone else's...but my wife and daughter can surely attest to the fact that I really do become a quite different animal after consuming chocolate. And I'm not alone: [chocolate rage](https://www.psychologytoday.com/us/blog/your-brain-food/201011/chocolate-the-good-the-bad-and-the-angry) is apparently a real phenomenon, though of course not everyone has that reaction.

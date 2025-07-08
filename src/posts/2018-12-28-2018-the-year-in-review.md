@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "2018: The Year in Review"
+title: '2018: The Year in Review'
 tags: post
+id: 0b56055f
+permalink: /blog/0b56055f/
 ---
 
 As per my annual tradition, here's a post about what this year was like for me.

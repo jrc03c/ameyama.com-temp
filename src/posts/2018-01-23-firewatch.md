@@ -3,8 +3,10 @@ layout: post
 title: Firewatch
 thumbnail: firewatch.png
 summary: Here's my review of Firewatch.
-banner: /media/firewatch.png
+banner: /res/media/firewatch.png
 tags: post
+id: be315d5e
+permalink: /blog/be315d5e/
 ---
 
 > **NOTE:** There might be spoilers!

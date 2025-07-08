@@ -2,6 +2,8 @@
 layout: post
 title: Link Dump Update
 tags: post
+id: 293083c6
+permalink: /blog/293083c6/
 ---
 
 Hey, everyone. If you've been waiting anxiously for this week's link dump, I'm sorry. It's not coming. 

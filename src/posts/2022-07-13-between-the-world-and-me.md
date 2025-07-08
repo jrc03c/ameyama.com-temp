@@ -2,6 +2,8 @@
 title: Between the World and Me
 layout: post
 tags: post
+id: c60e444e
+permalink: /blog/c60e444e/
 ---
 
 I recently finished [_Between the World and Me_](https://bookshop.org/books/between-the-world-and-me/9780812993547) by Ta-Nehisi Coates. It was so powerful, so devastating. Here are a handful of my favorite quotes.

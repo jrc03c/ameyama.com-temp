@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "2015: The Year in Review"
+title: '2015: The Year in Review'
 comments: true
 tags: post
+id: 18557f99
+permalink: /blog/18557f99/
 ---
 
 As I was browsing Twitter today, I saw that lots of people had been posting year-in-review posts, and I thought that I should do the same --- not just because I always do whatever the crowd does, but also because I think that there's real value in reflection.

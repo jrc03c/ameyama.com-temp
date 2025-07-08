@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "Broken Tooth"
+title: Broken Tooth
 comments: true
 tags: post
+id: 4edef69e
+permalink: /blog/4edef69e/
 ---
 
 So, a few weeks ago, I broke a tooth while eating some popcorn. So, I went to the dentist, and the dentist sent me to an endodontist. The endodontist recommended a root canal, and we followed through on that recommendation today. I hadn't been to a dentist in probably twelve years before this, by the way, and I'd definitely never had a root canal before. To be honest, I was pretty worried. My dental experiences as a child weren't horrifying or anything, but they were usually somewhat painful. In retrospect, perhaps everything is more painful as a child because you haven't yet experienced most of the various flavors of pain that life has to offer ... and even as of today, my life has been fairly well sheltered from pain. But anyway, today's appointment was one of the best dental experiences I've ever had. The staff was kind and professional, and they explained calmly and clearly everything that they were doing to me. Doctors should never allow that last bit to fall by the wayside: an important aspect of bedside manner from the perspective of a nervous patient like myself is continuous communication about what's going on. In any kind of doctor's office, I always feel like a frightened animal in a cage, and it's deeply reassuring when doctors explain what all the sounds and smells and lights and tubes and shots mean. Anyway, good on the crew at [Weatherford Endodontics](http://www.endo4texas.com/) for the way they treated me today. :)

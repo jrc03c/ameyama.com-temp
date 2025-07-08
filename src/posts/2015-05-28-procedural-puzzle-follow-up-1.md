@@ -3,9 +3,11 @@ layout: post
 title: "Procedural Puzzle Follow-Up #1"
 comments: true
 tags: post
+id: 1f965765
+permalink: /blog/1f965765/
 ---
 
-So, I've been doing some thinking about my [procedural puzzle game generation algorithm](/blog/2015/05/26/Procedural-Puzzle-Game-Generation/), and I've come to a few more conclusions. When I've come to a sufficiently large number of conclusions, I'll probably re-write that article, or make it a page, or both.
+So, I've been doing some thinking about my [procedural puzzle game generation algorithm](/blog/331663f1/), and I've come to a few more conclusions. When I've come to a sufficiently large number of conclusions, I'll probably re-write that article, or make it a page, or both.
 
 Here's the first thought: I don't know why I put "make a start node" as the first step, since what really matters is just that the _graph itself_ be generated first. _Then_, if you like, you can select the start and goal nodes. The reason that this realization is important is that it'll free me to up generate the world much more organically and less prefabricatedly (maybe), and then worry about the locks and keys.
 

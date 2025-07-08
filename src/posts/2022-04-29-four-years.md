@@ -2,6 +2,8 @@
 title: Four years
 layout: post
 tags: post
+id: 00e96fe7
+permalink: /blog/00e96fe7/
 ---
 
 > **Content Warning:** Vagueblogging

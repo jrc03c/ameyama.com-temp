@@ -2,6 +2,8 @@
 layout: post
 title: Broken down
 tags: post
+id: af2fefa6
+permalink: /blog/af2fefa6/
 ---
 
 I've been feeling kind of ... broken lately. Broken in the way that a car breaks down. Like I have a flat tire or two, the alignment is screwed up, the A/C doesn't work any more, and the right blinker is permanently turned on. And, of course, that doesn't even take into account the exterior damage: the busted tail-light, the smashed-in left side, the peeling paint, the rust, the huge cracks along the windshield.

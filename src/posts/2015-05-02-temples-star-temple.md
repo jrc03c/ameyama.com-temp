@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "Temples: Star Temple"
+title: 'Temples: Star Temple'
 comments: true
 tags: post
+id: b6d48fd2
+permalink: /blog/b6d48fd2/
 ---
 
 I started an album called <i>Temples</i>. It's probably going to be vaporware in the long run, but I suppose I'll just contribute sketches to it every once in a while. I made the first sketch today. It's called "Star Temple." You can hear it below!

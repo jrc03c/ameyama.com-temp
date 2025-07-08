@@ -1,8 +1,10 @@
 ---
 title: Night in the Woods
 layout: post
-banner: /media/nitw.jpg
+banner: /res/media/nitw.jpg
 tags: post
+id: ba5fc5b7
+permalink: /blog/ba5fc5b7/
 ---
 
 > **NOTE:** There may be spoilers.
@@ -57,4 +59,4 @@ In short, and without giving any more away, it was a story of a girl struggling 
 
 Sometimes, I feel a kind of skepticism about games. Like, I wonder whether they're as effective as books at conveying messages or encouraging empathy or pulling readers into valuable experiences. But what I've realized in playing this game is that, yes, they _can_ do all of those things just as well as books. And here's why. We learn lessons in life, but life is slow (relative to games and books), and often the lessons we learn and the significant experiences we have are diluted by long stretches of mundanity as we go to work or pay bills or go to the gym or watch TV or do any number of other boring, routine things. But games, like books, purposefully remove much of that mundanity and instead give us a concentrated dose of life's interesting moments in a short amount of time. And the frugality, the concision, of the story in a game also allows the player to see the effects of their choices more clearly and immediately. And _NITW_ sure does make you think hard about the choices you make.
 
-Not all games are so well made, of course. There's plenty of trash out there in the medium; in fact, perhaps the vast majority is trash. But every once in a while, there are diamonds in the rough like _NITW_ that definitely create experiences worth having. While playing this game, I teared up at times, and laughed out loud at times. It's definitely going on my [favorite games list](/res). Man. What a game. Go play it.
+Not all games are so well made, of course. There's plenty of trash out there in the medium; in fact, perhaps the vast majority is trash. But every once in a while, there are diamonds in the rough like _NITW_ that definitely create experiences worth having. While playing this game, I teared up at times, and laughed out loud at times. It's definitely going on my [favorite games list](#) (💀). Man. What a game. Go play it.

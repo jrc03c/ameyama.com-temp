@@ -1,8 +1,10 @@
 ---
 layout: post
-title: Austin, TX (Part 1)
-summary: ""
+title: 'Austin, TX (Part 1)'
+summary: ''
 tags: post
+id: 83c9a1e7
+permalink: /blog/83c9a1e7/
 ---
 
 > Currently listening to: ["Undertaker" by The Moondoggies](https://www.youtube.com/watch?v=AcwfdWP70Ug)

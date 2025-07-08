@@ -3,6 +3,8 @@ layout: post
 title: Procedural Puzzle Game Generation
 comments: true
 tags: post
+id: 331663f1
+permalink: /blog/331663f1/
 ---
 
 So, I've been working on a procedural puzzle game generation algorithm. I should stress that this algorithm produces puzzle _games_, not necessarily puzzles themselves ... though I suppose that if a game is filled with puzzles, then it is itself a kind of puzzle. Nevertheless, I wanted to share my algorithm here both as a reference for myself and as inspiration for others.
@@ -35,7 +37,7 @@ This process produces a playable game. It looks a bit easy, a bit boring, if you
 Here's the final version, in static mode. See if you can mentally play through it! The circles and lines are obviously nodes and edges. The start node is white, and the final goal node is black. The colored squares on the edges are the locks, and the colored triangles are keys. Paired keys and locks have the same color.
 
 <p class="centered">
-	<img src="/media/graph_static.png">
+	<img src="/res/media/graph_static.png">
 </p>
 
 Now, as a bonus, here are some extra thoughts.

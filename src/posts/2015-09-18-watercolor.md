@@ -2,8 +2,10 @@
 layout: post
 title: Watercolor
 comments: true
-thumbnail: "/media/watercolor_final.png"
+thumbnail: /res/media/watercolor_final.png
 tags: post
+id: 984e06c7
+permalink: /blog/984e06c7/
 ---
 
 I probably mentioned that I've been trying to make a little virtual study in Unity. But I've run into one small nag: I don't really like the extraordinarily low-poly, textureless feel needed to achieve acceptable speeds on my janky old iPhone 4. (Don't get me wrong; that art style is great for some projects ... it's just not good for this one.) So I've been working towards making a 2D, texture-only version. I've also wanted a more unusual art style, so I spent today creating a watercolor algorithm. In broad strokes, it uses a very slightly modified version of the _K_-means algorithm. Here it is in a little more detail:
@@ -36,8 +38,8 @@ It's not perfect yet, but it's good enough for government work. Here's an exampl
 
 _Before:_
 
-<img class="center-block img-responsive" src="/media/watercolor_original.jpg">
+<img class="center-block img-responsive" src="/res/media/watercolor_original.jpg">
 
 _After:_
 
-<img class="center-block img-responsive" src="/media/watercolor_final.png">
+<img class="center-block img-responsive" src="/res/media/watercolor_final.png">

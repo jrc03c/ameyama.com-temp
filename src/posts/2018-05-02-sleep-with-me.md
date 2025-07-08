@@ -1,8 +1,10 @@
 ---
 layout: post
 title: Sleep With Me
-banner: /media/sleep.png
+banner: /res/media/sleep.png
 tags: post
+id: '8e064210'
+permalink: /blog/8e064210/
 ---
 
 Friends, I've been listening to a podcast called [_Sleep With Me_](http://www.sleepwithmepodcast.com/). It's _awesome_ at helping me get to sleep.

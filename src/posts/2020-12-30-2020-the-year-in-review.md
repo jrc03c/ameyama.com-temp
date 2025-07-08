@@ -1,7 +1,9 @@
 ---
-title: "2020: The Year in Review"
+title: '2020: The Year in Review'
 layout: post
 tags: post
+id: 6ff575ad
+permalink: /blog/6ff575ad/
 ---
 
 Obviously, this year has been hard for everyone because of COVID, so I'll skip over all of that. Besides that, what happened for me this year?

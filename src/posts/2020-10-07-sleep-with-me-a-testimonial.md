@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "Sleep With Me: A Testimonial"
-banner: /media/sleep.png
+title: 'Sleep With Me: A Testimonial'
+banner: /res/media/sleep.png
 tags: post
+id: a67a44cd
+permalink: /blog/a67a44cd/
 ---
 
 I used to listen to a podcast called [_Half Hour Intern_](http://www.halfhourintern.com/). In each episode --- which usually lasted more than a half hour, despite the show's name --- Blake, the host, would interview people about their career paths and how they got started doing what they love. In one interview, Blake talked to Drew Ackerman, the creator of the [_Sleep With Me_](https://www.sleepwithmepodcast.com/) podcast. At that point, I had listened to a lot of podcasts, but I'd never heard of a podcast that was specifically designed to help people fall asleep. I was intrigued, so I downloaded an episode of Ackerman's podcast and gave it a listen. What I heard totally defied my expectations. I was expecting a beautifully-produced tapestry of soothing music and calming meditations about reducing anxiety or letting go of the events of the day, maybe with multiple voices, maybe with sound effects, etc. But I discovered instead that the show was nothing more or less than Ackerman rambling for an hour in what seemed a completely unscripted, unfocused, goofy way. He had a scratchy, creaky voice, and there was no music (except the brief intro song). The show was so far from my expectations that I was immediately unimpressed and even a little irritated, so I deleted the episode and put the show out of my mind.

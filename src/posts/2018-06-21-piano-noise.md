@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "Piano Noise"
+title: Piano Noise
 tags: post
+id: 8a08e661
+permalink: /blog/8a08e661/
 ---
 
-I made a little doodle for [ProcJam](https://itch.io/jam/procjam) called "Piano Noise." You can see it [here](/noise).
+I made a little doodle for [ProcJam](https://itch.io/jam/procjam) called "Piano Noise." You can see it [here](#) (💀).
 
-![](/media/piano-noise.png)
+![](/res/media/piano-noise.png)

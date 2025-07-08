@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "Mental Health Update"
+title: Mental Health Update
 tags: post
+id: 31a3c8b4
+permalink: /blog/31a3c8b4/
 ---
 
 Hey! It's been a while since I've written anything! I wanted to record a quick update on my mental health status. Almost three months ago, I finally went to see a doctor about what seemed to me to be depression symptoms. I was feeling really burned out on my work, I didn't want to pursue any hobbies, I couldn't muster the energy for even the simplest of adulting tasks, and I wanted to sleep all the time because my wakeful hours were almost completely filled with negative thoughts. I wasn't suicidal, but I was definitely tired of being conscious and living. There were times where, if I could've ceased to exist without hurting any of the people I care about, I would have. So, anyway, I described all of that to my doctor, and he was like, "Yep. You're definitely depressed." He prescribed Prozac, and I started taking it the next day.

@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "De-Googling"
+title: De-Googling
 tags: post
+id: 820ef67b
+permalink: /blog/820ef67b/
 ---
 
 I left Facebook a while ago, I left Twitter recently, and now I'm trying to leave Google and Amazon. I'm writing this post to list some of the alternatives I've been trying to use in place of those providers. So far, I'm using:

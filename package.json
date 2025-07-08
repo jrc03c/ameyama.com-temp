@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "node build.mjs",
+    "check-links": "node check-for-dead-links.mjs",
     "watch": "node build.mjs --watch"
   },
   "type": "module",

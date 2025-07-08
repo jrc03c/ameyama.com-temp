@@ -2,6 +2,8 @@
 layout: post
 title: Public Domain Resources
 tags: post
+id: '51030874'
+permalink: /blog/51030874/
 ---
 
 Here's a list of public domain resources that I hope to update regularly. If you know of any other good resources, or if you have any doubts about the goodness of any of these resources, please let me know!

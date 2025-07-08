@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "Focus on the Inputs"
+title: Focus on the Inputs
 tags: post
+id: 5f847b51
+permalink: /blog/5f847b51/
 ---
 
 So, I'm about 40 pounds overweight right now, and I'm not happy about it. I've been trying to lose weight for years, but I just haven't been able to stick with a diet or exercise regimen. I usually follow this pattern:

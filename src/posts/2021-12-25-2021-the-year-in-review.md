@@ -1,12 +1,14 @@
 ---
-title: "2021: The Year in Review"
+title: '2021: The Year in Review'
 layout: post
 tags: post
+id: ed0530a4
+permalink: /blog/ed0530a4/
 ---
 
 I only wrote one blog post this year?! That can't possibly be right. I guess I haven't written much this year because it hasn't felt like much has been happening. It was a sort of quiet, low-key year --- which is no bad thing, of course. But I guess I also feel like I sort of stumbled through it with my head down, watching my feet but not really watching the path, if that makes sense. How did 2021 already slide by?
 
-[![](/media/2021.png)](https://twitter.com/jzux/status/1470845861236076544)
+[![](/res/media/2021.png)](https://twitter.com/jzux/status/1470845861236076544)
 
 The main thing I remember about this year is the progress I made overcoming grief and trauma. I started seeing a therapist (or counselor? I'm not sure which is the right term) sometime in June. She diagnosed me with PTSD from the shit that happened back in 2018. That diagnosis marked an important shift for me. It validated the struggles I was having with depression and anxiety, especially the panic I felt every time I thought back to 2018. And putting a label on the otherwise nebulous blob of memories and feelings made it easier to talk about and deal with.
 

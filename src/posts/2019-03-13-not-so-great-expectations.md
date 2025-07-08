@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "Not-So-Great Expectations"
+title: Not-So-Great Expectations
 tags: post
+id: 2485ec5d
+permalink: /blog/2485ec5d/
 ---
 
 Sometimes, we learn lessons in life, but then either forget them or fail to apply them in new situations. I recently noticed that I had done that very thing. 

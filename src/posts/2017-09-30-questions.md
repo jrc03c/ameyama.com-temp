@@ -2,6 +2,8 @@
 layout: post
 title: Questions
 tags: post
+id: cad9c286
+permalink: /blog/cad9c286/
 ---
 
 Here are some questions for contemplation based on Buddhism's "Eight-Fold Path." I used to have these as a separate, unlinked page on my site, but I think I want them in an easier-to-find place ... so here they are.

@@ -2,6 +2,8 @@
 title: The Joy of Making
 layout: post
 tags: post
+id: 042d734d
+permalink: /blog/042d734d/
 ---
 
 I've spent a long time stressing about not having enough money. In truth, I have enough to live on --- I can pay my bills every month and can even occasionally put a tiny bit into savings --- but that's not quite the same as having enough to feel insulated from unexpected hardships.

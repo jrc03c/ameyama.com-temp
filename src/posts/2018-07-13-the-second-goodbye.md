@@ -1,7 +1,9 @@
 ---
-title: "The Second Goodbye"
+title: The Second Goodbye
 layout: post
 tags: post
+id: 48db563b
+permalink: /blog/48db563b/
 ---
 
 I've never written directly about religion on this blog. In fact, for many years, I felt like I _couldn't_ write about it here. The fear that my family would discover my real opinions about religion kept me from writing. But I want to address the topic today for three reasons. First, I finally had a conversation with my parents in which I laid out the gist of my religious views --- so that's no longer an issue. Second, few things are more formative in people's lives than religion ... and my life is no exception. The journey I want to chronicle here has shaped virtually every part of who I am, and it feels odd that such an enormously significant part of me should never be mentioned. Third, I _need_ to write about it. I've been ruminating on these thoughts for _so long_. Lewis said, "I was 'with book' as a woman is 'with child.'" I am too. I'm tired of gestating; it's time for these things to see the light of day. So, without further ado, here's my story.

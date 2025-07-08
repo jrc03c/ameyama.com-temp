@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "2019: The Year in Review"
+title: '2019: The Year in Review'
 tags: post
+id: f7b7ff7f
+permalink: /blog/f7b7ff7f/
 ---
 
 Well, another year has gone by. Somehow, this one seemed to fly past. Why, it seems like it was just yesterday that I was writing last year's "year in review" post! So, what's happened this year?

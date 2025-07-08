@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "Reply None"
+title: Reply None
 tags: post
+id: dc11e823
+permalink: /blog/dc11e823/
 ---
 
 > **Content Warning:** Vagueblogging

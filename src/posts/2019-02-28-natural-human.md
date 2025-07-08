@@ -2,6 +2,8 @@
 layout: post
 title: You Make Feel Like a Natural Human
 tags: post
+id: 7b9e93d3
+permalink: /blog/7b9e93d3/
 ---
 
 I recently saw a Nature Valley (makers of granola bars) commercial with the slogan "Nature makes us better." One implication of the commercial, inferred partially from the slogan and partially from the imagery, is something like this: "Spending too much time indoors, eating too much processed food, and not getting enough exercise are all detrimental to our health; so, we should get outside, eat more raw or lightly-processed foods, and move our bodies more." All of that's fine and probably an accurate diagnosis. But there's a deeper implication there as well, and it comes from the way the words are used. "Nature," the slogan implies, is something that can be applied to humans like ointment or that can be taken by humans like medicine or that can be entered into by humans like a sauna; and, having been consumed or entered into, it will "make them better." On this description (and here I infer more from other cultural sources, not merely from the commercial), "nature" is something that humans may have had at one point in the past and that they've now generally lost through technological processes but that they can re-obtain either individually or collectively by untethering themselves from technology and by getting back to "how things used to be." And it's this latter implication that I want to question in this post.

@@ -1,15 +1,17 @@
 ---
-title: "Three.js Doodles"
+title: Three.js Doodles
 layout: post
 tags: post
+id: 8afaf77b
+permalink: /blog/8afaf77b/
 ---
 
-Doodling in [three.js](https://threejs.org/) in [DoodleDoo](/doodledoo)!
+Doodling in [three.js](https://threejs.org/) in [DoodleDoo](#) (💀)!
 
-![/media/threejs2.png](/media/threejs2.png)
-![/media/threejs3.png](/media/threejs3.png)
-![/media/threejs4.png](/media/threejs4.png)
-![/media/threejs5.png](/media/threejs5.png)
-![/media/threejs6.png](/media/threejs6.png)
-![/media/threejs7.png](/media/threejs7.png)
-![/media/threejs8.png](/media/threejs8.png)
+![/res/media/threejs2.png](/res/media/threejs2.png)
+![/res/media/threejs3.png](/res/media/threejs3.png)
+![/res/media/threejs4.png](/res/media/threejs4.png)
+![/res/media/threejs5.png](/res/media/threejs5.png)
+![/res/media/threejs6.png](/res/media/threejs6.png)
+![/res/media/threejs7.png](/res/media/threejs7.png)
+![/res/media/threejs8.png](/res/media/threejs8.png)

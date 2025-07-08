@@ -2,14 +2,12 @@ import { collapseWhitespace } from "@jrc03c/js-text-tools"
 import { execSync } from "node:child_process"
 import { Logger } from "@jrc03c/logger"
 import { watch } from "@jrc03c/watch"
-import { WebCrawler } from "@jrc03c/web-crawler"
 import * as fsx from "@jrc03c/fs-extras"
 import express from "express"
 import fs from "node:fs"
 import path from "node:path"
 import process from "node:process"
 
-let crawler
 const logFile = path.join(import.meta.dirname, "build-logs.json")
 
 if (!fs.existsSync(logFile)) {
@@ -103,44 +101,6 @@ async function rebuild() {
     await buildSearchIndex()
     await buildSitemap()
     logger.logSuccess("Done! 🎉")
-
-    if (process.argv.includes("--watch") || process.argv.includes("-w")) {
-      if (crawler) {
-        try {
-          crawler.stop()
-        } catch (e) {}
-      }
-
-      const deadLinks = []
-
-      crawler = new WebCrawler({
-        delay: 0,
-        filter: url => url.includes("localhost:" + PORT),
-        requestTimeout: 3000,
-        shouldHonorBotRules: false,
-        shouldOnlyFollowSitemap: false,
-      })
-
-      logger.logInfo("Crawling for dead links...")
-
-      crawler.on("finish", () => {
-        if (deadLinks.length > 0) {
-          logger.logError(`These links are dead:\n${deadLinks.join("\n")}`)
-        }
-      })
-
-      crawler.on("error", v => {
-        if (v.message.includes("404") && !v.url.includes("mailto:")) {
-          deadLinks.push(v.url)
-        }
-      })
-
-      crawler.on("stop", () => {
-        logger.logWarning("Crawling stopped.")
-      })
-
-      crawler.start("http://localhost:" + PORT)
-    }
   } catch (e) {
     console.error(e)
   }

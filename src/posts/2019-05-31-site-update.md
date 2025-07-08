@@ -2,6 +2,8 @@
 title: Site Update
 layout: post
 tags: post
+id: 43d382d1
+permalink: /blog/43d382d1/
 ---
 
 > **UPDATE #2:** Well, in the end, I didn't like this new build system very much. I mean, parts of it were nice, but it ended up feeling overly complicated. Also, I just like JS-free sites so damn much. So, we're back to Jekyll again!

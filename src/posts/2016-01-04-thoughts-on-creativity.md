@@ -3,6 +3,8 @@ layout: post
 title: Thoughts on Creativity
 comments: true
 tags: post
+id: 17abad86
+permalink: /blog/17abad86/
 ---
 
 The following thoughts are severely half-baked.
