@@ -129,10 +129,6 @@ textarea {
   filter: contrast(25%) brightness(150%);
 }
 
-*:last-child {
-  margin-bottom: 0;
-}
-
 h1,
 h1 * {
   font-size: 2rem;
@@ -321,7 +317,7 @@ code {
 }
 
 pre:has(code) {
-  margin: 0 0 var(--spacing) 0;
+  margin: 0 0 var(--spacing) 0 !important;
   padding: var(--spacing);
   border-radius: var(--border-radius);
   background-color: black;
@@ -373,6 +369,10 @@ nav a::before {
 .page .details,
 .post .details {
   color: var(--color-grey-5);
+}
+
+*:not(body):last-child {
+  margin-bottom: 0 !important;
 }
 
 @media (max-width: 768px) {
