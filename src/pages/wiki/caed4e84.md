@@ -1,6 +1,11 @@
 ---
 title: Typescript notes
-tags: 'javascript, web, programming, typescript'
+tags:
+  - javascript
+  - programming
+  - typescript
+  - web
+  - wiki
 permalink: /wiki/caed4e84/
 layout: page
 ---

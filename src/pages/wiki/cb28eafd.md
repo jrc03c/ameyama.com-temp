@@ -1,6 +1,14 @@
 ---
 title: Encrypting a partition with LUKS in Linux
-tags: 'partition, disk, linux, encryption, decryption, security, privacy'
+tags:
+  - decryption
+  - disk
+  - encryption
+  - linux
+  - partition
+  - privacy
+  - security
+  - wiki
 permalink: /wiki/cb28eafd/
 layout: page
 ---

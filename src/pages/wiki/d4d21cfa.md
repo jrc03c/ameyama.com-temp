@@ -1,6 +1,9 @@
 ---
 title: Git cheat sheet
-tags: 'git, programming'
+tags:
+  - git
+  - programming
+  - wiki
 permalink: /wiki/d4d21cfa/
 layout: page
 ---

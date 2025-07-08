@@ -1,6 +1,14 @@
 ---
 title: Fix app icons in KDE
-tags: 'linux, kde, fedora, kinoite, atomic, immutable, distro'
+tags:
+  - atomic
+  - distro
+  - fedora
+  - immutable
+  - kde
+  - kinoite
+  - linux
+  - wiki
 permalink: /wiki/a30ef0db/
 layout: page
 ---

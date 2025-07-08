@@ -1,6 +1,12 @@
 ---
 title: 'JS: CommonJS vs. ECMAScript Modules'
-tags: 'programming, javascript, web-dev, cjs, esm'
+tags:
+  - cjs
+  - esm
+  - javascript
+  - programming
+  - web-dev
+  - wiki
 permalink: /wiki/1daccdd2/
 layout: page
 ---

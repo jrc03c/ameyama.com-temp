@@ -1,6 +1,10 @@
 ---
 title: '''Illegal constructor'' error for web components'
-tags: 'web-dev, js, programming'
+tags:
+  - js
+  - programming
+  - web-dev
+  - wiki
 permalink: /wiki/c5bcf3a7/
 layout: page
 ---

@@ -1,6 +1,8 @@
 ---
 title: Running a script on reboot using `systemd` (instead of `cron`)
-tags: linux
+tags:
+  - linux
+  - wiki
 permalink: /wiki/da5c5e1f/
 layout: page
 ---

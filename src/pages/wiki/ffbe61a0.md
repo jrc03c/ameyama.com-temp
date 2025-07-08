@@ -1,6 +1,11 @@
 ---
 title: Run a Node script as a process that never dies
-tags: 'node, javascript, programming, web'
+tags:
+  - javascript
+  - node
+  - programming
+  - web
+  - wiki
 permalink: /wiki/ffbe61a0/
 layout: page
 ---

@@ -2,7 +2,13 @@
 title: >-
   Notes on _The Wisdom of Your Body: Finding Healing, Wholeness, and Connection
   Through Embodied Living_ by Hillary McBride
-tags: 'psychology, well-being, self-help, self-care, embodiment'
+tags:
+  - embodiment
+  - psychology
+  - self-care
+  - self-help
+  - well-being
+  - wiki
 permalink: /wiki/fb3eade8/
 layout: page
 ---
