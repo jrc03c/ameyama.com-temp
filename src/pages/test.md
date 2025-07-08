@@ -4,14 +4,11 @@ layout: page
 permalink: /test/
 ---
 
-# Level 1
+Here's some inline KaTeX: <katex>a^2 + b^2 = c^2</katex>
 
-## Level 2
+And here's a KaTeX block:
 
-### Level 3
-
-#### Level 4
-
-##### Level 5
-
-###### Level 6
+<katex-block>
+r^2 = \frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2}
+r = \sqrt{\frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2}}
+</katex-block>
