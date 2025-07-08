@@ -1,10 +1,9 @@
 https://ameyama.com/
 https://ameyama.com/404/
-https://ameyama.com/about/
 https://ameyama.com/all-the-world-to-me/
+https://ameyama.com/blog/
 https://ameyama.com/bookshelf/
 https://ameyama.com/hey/
-https://ameyama.com/just-a-backup-index-page/
 https://ameyama.com/microblog/
 https://ameyama.com/poems/
 https://ameyama.com/posts/2015-03-30-medieval-cyborg-the-next-generation/

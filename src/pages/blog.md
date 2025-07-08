@@ -1,7 +1,7 @@
 ---
-permalink: /
-layout: page
 title: Blog
+layout: page
+permalink: /blog/
 ---
 
 {% assign posts_reversed = collections.post | reverse %}
