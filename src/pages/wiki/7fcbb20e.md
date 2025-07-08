@@ -9,7 +9,7 @@ permalink: /wiki/7fcbb20e/
 layout: page
 ---
 
-## Split the files
+### Split the files
 
 By number of lines per file:
 
@@ -25,7 +25,7 @@ By resulting file sizes:
 split -b 64k myFile myFileSplit
 ```
 
-## Re-join the files
+### Re-join the files
 
 ```bash
 cat myFileSplit* >> myFile

@@ -11,13 +11,13 @@ permalink: /wiki/1daccdd2/
 layout: page
 ---
 
-## File names
+### File names
 
 The convention nowadays (I think) is to use either `.js` or `.mjs` to denote ES module format and `.cjs` to denote CommonJS format. Even though they're all technically optional (I think), it's probably best to use `.mjs` and `.cjs` all the time to avoid ambiguity.
 
-## Import / export
+### Import / export
 
-### Exporting
+#### Exporting
 
 ```js
 // in a library's `index.js` file
@@ -50,7 +50,7 @@ import { bar } from "./path/to/index.js" // ERROR!
 
 In other words, files that only use named exports _must_ be imported using the `import { someName } from "./some-package.js"` syntax; and files that only use default exports _must_ be imported using the `import SomePackage from "./some-package.js"` syntax. However, it is possible to use both named and default exports within the same file, as illustrated in the `index.js` example above.
 
-### Importing
+#### Importing
 
 Here's an example that imports from the above `index.js` file:
 
@@ -65,7 +65,7 @@ import MyCoolLibrary from "./path/to/index.js"
 const { bar, baz, foo } = MyCoolLibrary
 ```
 
-## Setup modifications
+### Setup modifications
 
 Some or all of the changes mentioned below (and perhaps others not mentioned!) must be made so that packages can be bundled, used in the browser, imported in Node, etc.
 
@@ -106,7 +106,7 @@ And run it just like Jest:
 npx fake-jest
 ```
 
-### Bundling considerations
+#### Bundling considerations
 
 It may be a good idea to bundle _all_ libraries regardless of (1) browser vs. Node usage, (2) number of source files, or (3) dependence on other libraries. That's because there are lots of subtle little pitfalls related to using a library in Node vs. in the browser vs. in a bundle, etc., and bundling can make it a little easier for consumers to avoid those pitfalls. Therefore, my current recommendation is that all libraries should provide bundles for each relevant target. For example, here are some `esbuild` configurations for outputting three bundles: a Node / CommonJS / `require` version, an ESM / `import` version, and a "standalone" (IIFE) version:
 
@@ -157,7 +157,7 @@ require("./dist/lib.standalone.cjs")
 <script src="./dist/lib.standalone.cjs"></script>
 ```
 
-### Multiple entry points
+#### Multiple entry points
 
 It's apparently possible to provide multiple entry points to a library using the `"exports"` field in the library's `package.json` file, which can be useful for making the library accessible in both CJS and ESM contexts. Here's a standard setup recommended by the internet:
 

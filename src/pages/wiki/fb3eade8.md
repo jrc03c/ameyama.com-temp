@@ -13,7 +13,7 @@ permalink: /wiki/fb3eade8/
 layout: page
 ---
 
-## Body pronouns
+### Body pronouns
 
 In [_The Wisdom of Your Body: Finding Healing, Wholeness, and Connection Through Embodied Living_](https://bookshop.org/p/books/the-wisdom-of-your-body-finding-healing-wholeness-and-connection-through-embodied-living-hillary-l-mcbride/16458447?ean=9781587435522), Dr. Hillary McBride says that we ought to refer to our bodies not as "it" but as "he / him" or "she / her" (or whatever other personal pronouns).
 

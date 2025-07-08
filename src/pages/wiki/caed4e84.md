@@ -10,7 +10,7 @@ permalink: /wiki/caed4e84/
 layout: page
 ---
 
-## Bundling
+### Bundling
 
 1. Transpile TS files using `tsc`:
 
@@ -28,7 +28,7 @@ npx esbuild path/to/main.js --bundle [...]
 
 (Note the `*.js` extension! 👆)
 
-## Importing
+### Importing
 
 Importing works the same way in TS as in modern JS:
 

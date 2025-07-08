@@ -10,12 +10,12 @@ permalink: /wiki/17ddec7a/
 layout: page
 ---
 
-## Physical preparation
+### Physical preparation
 
 1. Don't eat for a few hours before the run.
 2. Take some Tums right before the run.
 
-## Mental preparation:
+### Mental preparation:
 
 1. Schedule a time for the run and stick to it.
 2. Set a goal (e.g., time, distance, pushing through pain, enjoying scenery, etc.).

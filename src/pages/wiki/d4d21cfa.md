@@ -30,7 +30,7 @@ Count the number of commits across all branches:
 git rev-list --count --all
 ```
 
-## Sources
+### Sources
 
 - [https://stackoverflow.com/a/54040342](https://stackoverflow.com/a/54040342)
 - [https://stackoverflow.com/a/4061706](https://stackoverflow.com/a/4061706)

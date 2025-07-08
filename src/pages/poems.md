@@ -4,7 +4,7 @@ title: Poems
 layout: page
 ---
 
-## Gentle Exorcism
+### Gentle Exorcism
 
 A ghost haunts the blue rooms<br>
 I see your face in mirrors<br>
@@ -19,7 +19,7 @@ May we both find peace and rest
 
 ---
 
-## Villanelle #1
+### Villanelle #1
 
 The boys in green; they in the ground a-lay<br>
 Along the purple road into the night<br>
@@ -48,9 +48,9 @@ The battle no-one won was on that day
 
 ---
 
-## Tankas
+### Tankas
 
-### #1
+#### #1
 
 The temple bell's call<br>
 Dances on cherry blossoms<br>
@@ -58,7 +58,7 @@ In the fresh spring breeze.<br>
 Let us go to the village<br>
 Together, my sweet daughter!
 
-### #2
+#### #2
 
 See the silver fish<br>
 Glittering in the river?<br>
@@ -66,7 +66,7 @@ He fancies himself<br>
 Lord of the Rushing Currents,<br>
 Dancing in the flashing sun.
 
-### #3
+#### #3
 
 Her hair falls smoothly,<br>
 Like a jet black waterfall —<br>
@@ -74,7 +74,7 @@ Raven ink spilling<br>
 Darkly on the porcelain<br>
 White, snowy slope of her neck.
 
-### #4
+#### #4
 
 The little bird arcs,<br>
 Tumbles in the bitter blast<br>
@@ -84,7 +84,7 @@ All you want is your warm nest!
 
 ---
 
-## Untitled #3
+### Untitled #3
 
 Pencil almost touching paper<br>
 What to say?<br>
