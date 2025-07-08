@@ -1,10 +1,12 @@
 ---
 title: All the World to Me
 permalink: /all-the-world-to-me/
+layout: page
 ---
 
 <style>
   .poem {
+    margin: 0 0 var(--spacing-lg) 0;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -24,6 +26,11 @@ permalink: /all-the-world-to-me/
     text-indent: -1.5em;
   }
 
+  .poem + hr {
+    background-color: var(--color-grey-9);
+    margin: var(--spacing-lg) 0;
+  }
+
   @media (max-width: 384px) {
     .poem img {
       max-width: 100%;
@@ -33,7 +40,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/rain.png">
+    <img src="/all-the-world-to-me/img/rain.png">
   </div>
 
   <h2>Rain</h2>
@@ -50,7 +57,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/boat.png">
+    <img src="/all-the-world-to-me/img/boat.png">
   </div>
 
   <h2>Thunder</h2>
@@ -67,7 +74,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/wind.png">
+    <img src="/all-the-world-to-me/img/wind.png">
   </div>
 
   <h2>Wind</h2>
@@ -84,7 +91,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/snow.png">
+    <img src="/all-the-world-to-me/img/snow.png">
   </div>
 
   <h2>Snow</h2>
@@ -106,7 +113,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/plane.png">
+    <img src="/all-the-world-to-me/img/plane.png">
   </div>
 
   <h2>Planes</h2>
@@ -123,7 +130,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/train.png">
+    <img src="/all-the-world-to-me/img/train.png">
   </div>
 
   <h2>Trains</h2>
@@ -152,7 +159,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/car.png">
+    <img src="/all-the-world-to-me/img/car.png">
   </div>
 
   <h2>Automobiles</h2>
@@ -170,7 +177,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/chair.png">
+    <img src="/all-the-world-to-me/img/chair.png">
   </div>
 
   <h2>Five Things</h2>
@@ -187,7 +194,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/mouse.png">
+    <img src="/all-the-world-to-me/img/mouse.png">
   </div>
 
   <h2>Small</h2>
@@ -204,7 +211,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/fruit.png">
+    <img src="/all-the-world-to-me/img/fruit.png">
   </div>
 
   <h2>Raspberry Jam</h2>
@@ -221,7 +228,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/wise.png">
+    <img src="/all-the-world-to-me/img/wise.png">
   </div>
 
   <h2>Who is Wise?</h2>
@@ -263,7 +270,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/night.png">
+    <img src="/all-the-world-to-me/img/night.png">
   </div>
 
   <h2>Goodnight Song</h2>
@@ -292,7 +299,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/sleep.png">
+    <img src="/all-the-world-to-me/img/sleep.png">
   </div>
 
   <h2>I'd Rather Not Sleep</h2>
@@ -324,7 +331,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/birds.png">
+    <img src="/all-the-world-to-me/img/birds.png">
   </div>
 
   <h2>Little Bird</h2>
@@ -368,7 +375,7 @@ permalink: /all-the-world-to-me/
 
 <div class="poem">
   <div>
-    <img src="/pages/all-the-world-to-me/img/fireflies.png">
+    <img src="/all-the-world-to-me/img/fireflies.png">
   </div>
 
   <h2>Fireflies</h2>

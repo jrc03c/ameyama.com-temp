@@ -49,4 +49,8 @@ export default async function (config) {
   // NOTE: This path is relative to the root of the project, *not* the input
   // directory!
   config.addPassthroughCopy({ "src/static": "./" })
+
+  config.addPassthroughCopy({
+    "src/pages/all-the-world-to-me/img": "./all-the-world-to-me/img",
+  })
 }

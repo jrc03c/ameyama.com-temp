@@ -139,7 +139,7 @@ async function rebuild() {
         logger.logWarning("Crawling stopped.")
       })
 
-      // crawler.start("http://localhost:" + PORT)
+      crawler.start("http://localhost:" + PORT)
     }
   } catch (e) {
     console.error(e)

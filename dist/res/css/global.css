@@ -264,6 +264,10 @@ blockquote {
   box-shadow: var(--shadow);
 }
 
+blockquote > *:last-child {
+  margin-bottom: 0;
+}
+
 .box {
   margin: 0 0 calc(var(--spacing) + var(--shadow-length)) 0;
   padding: var(--spacing);
@@ -369,10 +373,6 @@ nav a::before {
 .page .details,
 .post .details {
   color: var(--color-grey-5);
-}
-
-*:not(body):last-child {
-  margin-bottom: 0 !important;
 }
 
 @media (max-width: 768px) {
