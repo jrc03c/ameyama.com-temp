@@ -13,6 +13,6 @@ chown --reference=file1 file2
 chmod --reference=file1 file2
 ```
 
-### Sources
+**Sources:**
 
 - [https://unix.stackexchange.com/a/20646](https://unix.stackexchange.com/a/20646)

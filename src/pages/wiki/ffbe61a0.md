@@ -19,6 +19,6 @@ nohup node script.js > /dev/null 2>&1 &
 3. `2>&1` means: stderr also goes to the stdout (which is already redirected to /dev/null). You may replace &1 with a file path to keep a log of errors, e.g.: 2>/tmp/myLog
 4. `&` at the end means: run this command as a background task.
 
-### Sources
+**Sources:**
 
 - [https://stackoverflow.com/a/11856575](https://stackoverflow.com/a/11856575)
